@@ -82,11 +82,11 @@ setReplaceMethod(
             return(theobject)
         })
 
-#' setHeterochromatin
+#' Allocates heterochromatic region coordinates
 #'
 #' @description
-#' This method sets the heterochromatin regions for an object of class
-#' `genomicCompartments`.
+#' This method stores the heterochromatin region coordinates in an object of
+#' class `genomicCompartments`.
 #'
 #' @usage
 #' setHeterochromatin(obj) <- value
@@ -117,10 +117,10 @@ setReplaceMethod(
             return(theobject)
         })
 
-#' setSINE
+#' Allocates SINE coordinates
 #'
 #' @description
-#' This method sets the SINE regions for an object of class
+#' This method stores the SINE coordinates in an object of class
 #' `genomicCompartments`.
 #'
 #' @usage
@@ -152,11 +152,11 @@ setReplaceMethod(
             return(theobject)
         })
 
-#' setLINE
+#' Allocate LINE coordinates
 #'
 #' @description
-#' This method sets the LINE regions for an object of class
-#' `genomicCompartments`.
+#' This method stores the LINE coordinates in an object of
+#' class `genomicCompartments`.
 #'
 #' @usage
 #' setLINE(obj) <- value
@@ -187,11 +187,11 @@ setReplaceMethod(
             return(theobject)
         })
 
-#' setLTR
+#' Allocate LTR coordinates
 #'
 #' @description
-#' This method sets the LTR regions for an object of class
-#' `genomicCompartments`.
+#' This method stores the heterochromatin region coordinates in an object of
+#' class `genomicCompartments`.
 #'
 #' @usage
 #' setLTR(obj) <- value

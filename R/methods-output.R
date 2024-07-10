@@ -8,16 +8,16 @@
             sep = "\t", quote = FALSE, row.names = FALSE, col.names = FALSE)
 }
 
+
 #' Output Glc Peaks Coordinates per Compartment
+#'
+#' @description
+#' This method calculates the overlap of glc peaks with each compartment
+#' defined in the `genomicCompartments` object.
 #'
 #' @usage
 #' outputGlcPeaksCoordPerCompartment(theobject, outputfolder, glcpeakspath,
 #'                        includerepeats)
-#'
-#' @description
-#' This method calculates the overlap of glc peaks with each compartment
-#' defined in the `genomicCompartments` object and outputs the coordinates of
-#' the overlapping peaks to specified output formats (GFF and BED).
 #'
 #' @param theobject An object of class `genomicCompartments`.
 #' @param outputfolder Path to the folder where output files will be written.
@@ -26,15 +26,28 @@
 #' @param includerepeats Logical indicating whether to include repeat regions
 #' in the analysis.
 #'
-#' @return Returns nothing explicitly; outputs GFF and BED files to the
-#' specified folder.
+#' @return Returns nothing explicitly; Write GFF and BED files of the
+#' coordinates of the glc peaks overlapping with a specific compartment.
 #'
 #' @examples
 #' \dontrun{
+#' # Parameters
+#' peakspathquery <- "/path/to/glc.gff"
+#' peakspathcategoriesvec <- c(H3K27ac = "/path/to/H3K27ac.gff",
+#'        H3K4me1 = "/path/to/H3K4me1.gff", H3K27me3 = "/path/to/H3K27me3.gff",
+#'        H3K4me3 = "/path/to/H3K4me3.gff", Suz12 = NA, RING1B = NA,
+#'        H3K9me3 = "/path/to/H3K9me3.gff", Ser5P = "/path/to/Ser5P.gff",
+#'        Ser2P = "/path/to/Ser2P.gff", ATACSeq = "/path/to/ATACseq.gff")
+#' peakspathvec <- c(peakspathquery, peakspathcategoriesvec)
+#' geneannovec <- c(gencode = "/path/to/gencode.gff",
+#'        refgene = "/path/to/refGeneUCSC.gff",
+#'        refseq = "/path/to/refseq.gff")
+#'
 #' # Create a genomicCompartments object
 #' gc_obj <- genomeCompart(peakspathvec, geneannovec)
+#'
 #' # Output glc peaks coordinates per compartment
-#' outputGlcPeaksCoordPerCompartment(gc_obj, outputfolder, glcpeakspath,
+#' outputGlcPeaksCoordPerCompartment(gc_obj, outputfolder, peakspathquery,
 #' includerepeats = FALSE)
 #' }
 #'

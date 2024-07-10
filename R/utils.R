@@ -18,7 +18,7 @@
 #' }
 #'
 #' @return A `GRanges` object with the specified genomic coordinates and
-#' annotations.
+#' feature names.
 #'
 #' @examples
 #' \dontrun{
@@ -56,7 +56,7 @@ buildGRNoReading <- function(fi) { # nolint
 #' }
 #'
 #' @return A `GRanges` object with the specified genomic coordinates and
-#' annotations.
+#' feature names.
 #'
 #' @examples
 #' \dontrun{

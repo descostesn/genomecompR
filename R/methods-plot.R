@@ -2,31 +2,7 @@
 ## matrixForUpset
 #################################
 
-#' Create Matrix for UpSet Plot
-#'
-#' @description
-#' This method creates a matrix for generating an UpSet plot, indicating
-#' overlaps between glucnac peaks and genomic compartments.
-#'
-#' @usage
-#' matrixForUpset(theobject, includerepeats, glcpeakvalues)
-#'
-#' @param theobject An object of class `genomicCompartments`.
-#' @param includerepeats Logical indicating whether to include repeats in the
-#' analysis.
-#' @param glcpeakvalues Numeric vector of glucnac peak values.
-#'
-#' @return Returns the modified `genomicCompartments` object with the regions
-#' matrix assigned.
-#'
-#' @examples
-#' \dontrun{
-#' # Create a genomicCompartments object
-#' gc_obj <- genomeCompart(peakspathvec, geneannovec)
-#' # Create matrix for UpSet plot
-#' matrixForUpset(gc_obj, includerepeats = TRUE, glcpeakvalues = c(1, 2, 3))
-#' }
-#'
+
 .matPerPeakComp <- function(regionsperpeaklist, glcpeakvalues) { # nolint
 
     regionslist <- mapply(function(currentpeakregions, currentcoordinates,
@@ -60,6 +36,31 @@
     return(regionsmatrix)
 }
 
+#' Create Matrix for UpSet Plot
+#'
+#' @description
+#' This method creates a matrix for generating an UpSet plot, indicating
+#' overlaps between glucnac peaks and genomic compartments.
+#'
+#' @usage
+#' matrixForUpset(theobject, includerepeats, glcpeakvalues)
+#'
+#' @param theobject An object of class `genomicCompartments`.
+#' @param includerepeats Logical indicating whether to include repeats in the
+#' analysis.
+#' @param glcpeakvalues Numeric vector of glucnac peak values.
+#'
+#' @return Returns the modified `genomicCompartments` object with the regions
+#' matrix assigned.
+#'
+#' @examples
+#' \dontrun{
+#' # Create a genomicCompartments object
+#' gc_obj <- genomeCompart(peakspathvec, geneannovec)
+#' # Create matrix for UpSet plot
+#' matrixForUpset(gc_obj, includerepeats = TRUE, glcpeakvalues = c(1, 2, 3))
+#' }
+#'
 setMethod(
 
         f = "matrixForUpset",

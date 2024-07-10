@@ -54,7 +54,7 @@
 #' gc_obj <- genomeCompart(peakspathvec, geneannovec)
 #' # Perform overlap analysis on TSS with H3K27ac peaks
 #' overlapOnGenes(gc_obj, regionlabel = "TSS", peaklabel = "H3K27ac",
-#' peakpath = "path/to/peaks.bed")
+#' peakpath = "path/to/peaks.gff")
 #' }
 #'
 setMethod( # nolint
@@ -150,7 +150,7 @@ setMethod( # nolint
 #'
 #' @description
 #' This method identifies bivalent promoters by creating a merged GRanges object
-#' from peaks of H3K4me3 and H3K27me3 histone marks.
+#' from peaks of H3K4me3 and H3K27me3 histone marks at TSS-/+1Kb.
 #'
 #' @usage
 #' bivalentPromoters(theobject, peakspathvec)
@@ -167,8 +167,8 @@ setMethod( # nolint
 #' # Create a genomicCompartments object
 #' gc_obj <- genomeCompart(peakspathvec, geneannovec)
 #' # Identify bivalent promoters
-#' bivalentPromoters(gc_obj, peakspathvec = c(H3K4me3 = "path/to/H3K4me3.bed",
-#' H3K27me3 = "path/to/H3K27me3.bed"))
+#' bivalentPromoters(gc_obj, peakspathvec = c(H3K4me3 = "path/to/H3K4me3.gff",
+#' H3K27me3 = "path/to/H3K27me3.gff"))
 #' }
 #'
 setMethod(
@@ -222,9 +222,9 @@ setMethod(
 #' # Create a genomicCompartments object
 #' gc_obj <- genomeCompart(peakspathvec, geneannovec)
 #' # Identify active enhancers
-#' enhancer(gc_obj, peakspath1 = "path/to/H3K27ac.bed",
-#'  peakspath2 = "path/to/H3K4me1.bed",
-#'  peakspath3 = "path/to/ATAC-seq.bed",
+#' enhancer(gc_obj, peakspath1 = "path/to/H3K27ac.gff",
+#'  peakspath2 = "path/to/H3K4me1.gff",
+#'  peakspath3 = "path/to/ATAC-seq.gff",
 #' label1 = "H3K27ac", label2 = "H3K4me1", label3 = "ATAC-seq",
 #' statelabel = "active")
 #' }
@@ -305,8 +305,8 @@ setMethod(
 #' # Create a genomicCompartments object
 #' gc_obj <- genomeCompart(peakspathvec, geneannovec)
 #' # Identify Polycomb domains
-#' polycombsDomains(gc_obj, peakspath1 = "path/to/SUZ12.bed",
-#'  peakspath2 = "path/to/RING1B.bed",
+#' polycombsDomains(gc_obj, peakspath1 = "path/to/SUZ12.gff",
+#'  peakspath2 = "path/to/RING1B.gff",
 #'  label1 = "SUZ12", label2 = "RING1B", domainname = "PolycombDomains")
 #' }
 #'

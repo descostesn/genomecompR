@@ -108,6 +108,32 @@ setMethod(
 ## upsetDiagram
 #################################
 
+
+.plotUpset <- function(regionsmatrix, outputfolder, plotupset) { # nolint
+
+    ## Removing column containing the peak values and converting to logical
+    idx <- which(colnames(regionsmatrix) == "valpeak")
+    regionsmatrix <- regionsmatrix[, -idx]
+    namesvec <- rownames(regionsmatrix)
+    regionsmatrix <- apply(regionsmatrix, 2, as.logical)
+    rownames(regionsmatrix) <- namesvec
+
+    namescolregions <- colnames(regionsmatrix)
+    res <- tibble::tibble(anno = lapply(seq_len(nrow(regionsmatrix)),
+                    function(i) namescolregions[regionsmatrix[i, ]]))
+    g <- ggplot2::ggplot(res, aes_(x = ~anno)) + geom_bar() + # nolint
+            xlab(NULL) + ylab(NULL) + theme_minimal() + # nolint
+            ggupset::scale_x_upset(n_intersections = 20, order_by = "freq")
+
+    if (plotupset) {
+        dev.new()
+        print(g)
+    } else {
+        ggplot2::ggsave(filename = "upSetGenomicCompartment.pdf", plot = g,
+            device = "pdf", path = outputfolder)
+    }
+}
+
 #' Generate UpSet Diagram
 #'
 #' @description
@@ -136,31 +162,6 @@ setMethod(
 #' includerepeats = TRUE, plotupset = TRUE)
 #' }
 #'
-.plotUpset <- function(regionsmatrix, outputfolder, plotupset) { # nolint
-
-    ## Removing column containing the peak values and converting to logical
-    idx <- which(colnames(regionsmatrix) == "valpeak")
-    regionsmatrix <- regionsmatrix[, -idx]
-    namesvec <- rownames(regionsmatrix)
-    regionsmatrix <- apply(regionsmatrix, 2, as.logical)
-    rownames(regionsmatrix) <- namesvec
-
-    namescolregions <- colnames(regionsmatrix)
-    res <- tibble::tibble(anno = lapply(seq_len(nrow(regionsmatrix)),
-                    function(i) namescolregions[regionsmatrix[i, ]]))
-    g <- ggplot2::ggplot(res, aes_(x = ~anno)) + geom_bar() + # nolint
-            xlab(NULL) + ylab(NULL) + theme_minimal() + # nolint
-            ggupset::scale_x_upset(n_intersections = 20, order_by = "freq")
-
-    if (plotupset) {
-        dev.new()
-        print(g)
-    } else {
-        ggplot2::ggsave(filename = "upSetGenomicCompartment.pdf", plot = g,
-            device = "pdf", path = outputfolder)
-    }
-}
-
 setMethod(
 
         f = "upsetDiagram",

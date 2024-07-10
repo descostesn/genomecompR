@@ -189,33 +189,7 @@ setMethod(
 ## retrieveGlcPeakVal
 #################################
 
-#' Retrieve Glucnac Peak Values
-#'
-#' @description
-#' This method retrieves glucnac peak values associated with genomic
-#' compartments.
-#'
-#' @usage
-#' retrieveGlcPeakVal(theobject, includerepeats, bwpath)
-#' 
-#' @param theobject An object of class `genomicCompartments`.
-#' @param includerepeats Logical indicating whether to include repeats in the
-#' analysis.
-#' @param bwpath Character string specifying the path to the bigWig file
-#' containing glucnac peak values.
-#'
-#' @return Returns the modified `genomicCompartments` object with glucnac peak
-#' values assigned.
-#'
-#' @examples
-#' \dontrun{
-#' # Create a genomicCompartments object
-#' gc_obj <- genomeCompart(peakspathvec, geneannovec)
-#' # Retrieve glucnac peak values
-#' gc_obj <- retrieveGlcPeakVal(gc_obj, includerepeats = TRUE,
-#' bwpath = "path/to/bigWig/files")
-#' }
-#'
+
 .retrieveBindingVal <- function(bwpath, complist) { # nolint
 
     message("Retrieving binding values (this might take a while):")
@@ -267,6 +241,34 @@ setMethod(
     return(glclist)
 }
 
+
+#' Retrieve Glucnac Peak Values
+#'
+#' @description
+#' This method retrieves glucnac peak values associated with genomic
+#' compartments.
+#'
+#' @usage
+#' retrieveGlcPeakVal(theobject, includerepeats, bwpath)
+#' 
+#' @param theobject An object of class `genomicCompartments`.
+#' @param includerepeats Logical indicating whether to include repeats in the
+#' analysis.
+#' @param bwpath Character string specifying the path to the bigWig file
+#' containing glucnac peak values.
+#'
+#' @return Returns the modified `genomicCompartments` object with glucnac peak
+#' values assigned.
+#'
+#' @examples
+#' \dontrun{
+#' # Create a genomicCompartments object
+#' gc_obj <- genomeCompart(peakspathvec, geneannovec)
+#' # Retrieve glucnac peak values
+#' gc_obj <- retrieveGlcPeakVal(gc_obj, includerepeats = TRUE,
+#' bwpath = "path/to/bigWig/files")
+#' }
+#'
 setMethod(
 
         f = "retrieveGlcPeakVal",

@@ -641,7 +641,7 @@ setMethod(
             validObject(theobject)
 
             ## PART 1: Considering all annotations
-            ## Retrieve glucnac values from bw for each compartment
+            ## Retrieve glc values from bw for each compartment
             complist <- aslist(theobject, includerepeats)
             mean_list <- .retrieveBindingVal(bwpath, complist)
 

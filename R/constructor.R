@@ -30,10 +30,8 @@
 #' genomeCompart(peakspathvec, geneannovec)
 #'
 #' @description
-#' This function reads glc peaks and gene annotations, converts them to
-#' `GRanges` and `GRangesList` objects, respectively, and returns a
-#' `genomicCompartments` object. It processes the input files by filtering out
-#' unwanted annotations and chromosomes.
+#' This function is the constructor of the genomicCompartments object. It is
+#' called by the function buildIntervalsObject.
 #'
 #' @param peakspathvec Character vector containing the path to the peaks file.
 #' @param geneannovec Character vector containing the paths to gene annotation
@@ -42,10 +40,27 @@
 #' @return Returns an object of class `genomicCompartments` containing the
 #' processed peaks and gene annotations.
 #'
+#' @details
+#' peakspathvec is made of the GFF file containing glc peaks and of the GFF
+#' files containing the ChIP-seq and ATAC-seq peak coordinates. The geneannovec
+#' contains path to the gencode, refgene, and refseq gff files.
+#'
+#' @seealso
+#' buildIntervalsObject
+#'
 #' @examples
 #' \dontrun{
-#' peakspathvec <- c("path/to/peaks.gff")
-#' geneannovec <- c("path/to/geneanno1.gff", "path/to/geneanno2.gff")
+#' peakspathquery <- "/path/to/glc.gff"
+#' peakspathcategoriesvec <- c(H3K27ac = "/path/to/H3K27ac.gff",
+#'        H3K4me1 = "/path/to/H3K4me1.gff", H3K27me3 = "/path/to/H3K27me3.gff",
+#'        H3K4me3 = "/path/to/H3K4me3.gff", Suz12 = NA, RING1B = NA,
+#'        H3K9me3 = "/path/to/H3K9me3.gff", Ser5P = "/path/to/Ser5P.gff",
+#'        Ser2P = "/path/to/Ser2P.gff", ATACSeq = "/path/to/ATACseq.gff")
+#' peakspathvec <- c(peakspathquery, peakspathcategoriesvec)
+#' geneannovec <- c(gencode = "/path/to/gencode.gff",
+#'        refgene = "/path/to/refGeneUCSC.gff",
+#'        refseq = "/path/to/refseq.gff")
+#' 
 #' genomic_compartments <- genomeCompart(peakspathvec, geneannovec)
 #' }
 #'

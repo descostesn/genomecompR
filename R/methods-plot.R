@@ -662,34 +662,6 @@ setMethod(
 ## complexUpsetDiagram
 #################################
 
-#' Generate Complex Upset Diagram
-#'
-#' @description
-#' This method generates a complex upset diagram to visualize overlaps of
-#' GlcNAc peaks with genomic compartments and their values across multiple
-#' replicates.
-#'
-#' @usage
-#' complexUpsetDiagram(theobject, includerepeats, outfold)
-#' 
-#' @param theobject A list of objects of class `genomicCompartments`.
-#' @param includerepeats Logical indicating whether to include repeats in the
-#' analysis.
-#' @param outfold Character string specifying the output folder path for saving
-#' the upset diagram and boxplot.
-#'
-#' @return No return value. The function generates and saves a complex upset
-#' plot in the specified output folder.
-#'
-#' @examples
-#' \dontrun{
-#' # Create a list of genomicCompartments objects
-#' gc_list <- list(gc_obj1, gc_obj2, gc_obj3)
-#' # Generate complex upset diagram
-#' complexUpsetDiagram(gc_list, includerepeats = TRUE,
-#'  outfold = "path/to/output_folder")
-#' }
-#'
 .createMatUpset <- function(theobject, glclist, includerepeats) { # nolint
 
     gcmatlist <- mapply(function(currentcompartment, currentglcval,
@@ -740,6 +712,34 @@ setMethod(
         path = outfold)
 }
 
+#' Generate Complex Upset Diagram
+#'
+#' @description
+#' This method generates a complex upset diagram to visualize overlaps of
+#' GlcNAc peaks with genomic compartments and their values across multiple
+#' replicates.
+#'
+#' @usage
+#' complexUpsetDiagram(theobject, includerepeats, outfold)
+#' 
+#' @param theobject A list of objects of class `genomicCompartments`.
+#' @param includerepeats Logical indicating whether to include repeats in the
+#' analysis.
+#' @param outfold Character string specifying the output folder path for saving
+#' the upset diagram and boxplot.
+#'
+#' @return No return value. The function generates and saves a complex upset
+#' plot in the specified output folder.
+#'
+#' @examples
+#' \dontrun{
+#' # Create a list of genomicCompartments objects
+#' gc_list <- list(gc_obj1, gc_obj2, gc_obj3)
+#' # Generate complex upset diagram
+#' complexUpsetDiagram(gc_list, includerepeats = TRUE,
+#'  outfold = "path/to/output_folder")
+#' }
+#'
 setMethod(
 
         f = "complexUpsetDiagram",

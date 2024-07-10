@@ -105,28 +105,28 @@ buildGR <- function(currentpath) { # nolint
     return(resultoverlap)
 }
 
-#' Validate Parameters for Genomic Analysis
+#' Validate Parameters given as input to different functions of the package
 #'
 #' @description
-#' This function validates various parameters required for genomic analysis to
+#' This function validates various parameters required by several functions to
 #' ensure they meet the expected criteria.
 #'
 #' @usage
-#' checkParams <- function(peakspathqueryvec, glcnacbwvec, querynamevec,
+#' checkParams(peakspathqueryvec, glcnacbwvec, querynamevec,
 #'        geneannovec, peakspathcategoriesvec, repeatsannovec, countstable,
 #'        includerepeats, countsannotype)
 #'
-#' @param peakspathqueryvec A vector of file paths to peak files for the
-#' queries.
-#' @param glcnacbwvec A vector of file paths to glucnac bigwig files.
-#' @param querynamevec A vector of names corresponding to the query files.
+#' @param peakspathqueryvec A vector of file paths to peak files in GFF format.
+#' @param glcnacbwvec A vector of file paths to glc bigwig files.
+#' @param querynamevec A vector of names corresponding to the peak files.
 #' @param geneannovec A vector of file paths to gene annotation files,
 #' expected to be in the order of gencode, refGene, and refseq.
 #' @param peakspathcategoriesvec A vector of names for each peak file, expected
 #' to contain strings identifying categories such as H3K27ac, H3K4me1, etc.
-#' @param repeatsannovec A vector of file paths to repeat annotation files,
-#' expected to contain strings identifying LINE, LTR, and SINE.
-#' @param countstable A vector containing the path to a counts table file.
+#' @param repeatsannovec A vector of file paths to repeat annotation files in
+#' GFF format. The file names are expected to contain the substrings LINE,
+#' LTR, and SINE.
+#' @param countstable A vector containing the path to a count table file.
 #' @param includerepeats A logical value indicating whether to include repeat
 #' annotations.
 #' @param countsannotype A string specifying the annotation type for the counts
@@ -137,16 +137,17 @@ buildGR <- function(currentpath) { # nolint
 #'
 #' @details This function performs the following validation checks:
 #' \itemize{
-#'   \item Ensures there are no more than two experiments.
+#'   \item Ensures there are no more than two files in peakspathqueryvec.
 #'   \item Checks that the number of peak files matches the number of bigwig
 #' files.
-#'   \item Verifies that the number of query names matches the number of files.
-#'   \item Validates that gene annotation files are gencode, refGene, and
-#' refseq.
+#'   \item Verifies that the number of query names matches the number of peak
+#' files.
+#'   \item Validates that gene annotation files are ordered as gencode, refGene,
+#' and refseq.
 #'   \item Confirms that category peak files contain the expected strings for
 #' categories like H3K27ac, H3K4me1, etc.
 #'   \item If repeat annotations are included, checks that the repeat files
-#' contain the expected strings for LINE, LTR, and SINE.
+#' contain the expected substrings LINE, LTR, and SINE.
 #'   \item Ensures only one counts table is provided.
 #'   \item Validates that the counts table annotation type is either "ensembl"
 #' or "entrez".
@@ -154,7 +155,7 @@ buildGR <- function(currentpath) { # nolint
 #'
 #' @examples
 #' \dontrun{
-#' peakspathqueryvec <- c("path/to/peak1", "path/to/peak2")
+#' peakspathqueryvec <- c("path/to/peak1.gff", "path/to/peak2.gff")
 #' glcnacbwvec <- c("path/to/bw1", "path/to/bw2")
 #' querynamevec <- c("query1", "query2")
 #' geneannovec <- c("gencode", "refGene", "refseq")
@@ -284,9 +285,10 @@ filterChromAndStrand <- function(currentgr) { # nolint
 #' @usage
 #' buildIntervalsObject(peakspathvec, geneannos, includerepeats)
 #'
-#' @param peakspathvec A named vector of file paths to peak files for various
-#' ChIP-seq and ATAC-seq data. Expected names include: "H3K27ac", "Ser5P",
-#' "Ser2P", "H3K4me3", "H3K27me3", "ATACSeq", "Suz12", "RING1B", "H3K9me3".
+#' @param peakspathvec A named vector of file paths to peak files in GFF format
+#' for various ChIP-seq and ATAC-seq data. Expected names include: "H3K27ac",
+#' "Ser5P", "Ser2P", "H3K4me3", "H3K27me3", "ATACSeq", "Suz12", "RING1B",
+#' "H3K9me3".
 #' @param geneannos A list of gene annotation files to be used for defining
 #' non-redundant gene sets and other features.
 #' @param includerepeats A logical value indicating whether to include repeat

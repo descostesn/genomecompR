@@ -1,0 +1,18 @@
+1.0.4:
+Add documentation
+1.0.3:
+- add condition in .filterChrom
+- remove grcuratedanno from bivalentPromoters
+- add suppressWarnings in .overlapAndMergedTwoSamples
+- add condition on idx in .filterAnno
+- add return NA in .returnAnnoGR and .tpmValuesRNASeq
+- add condition if all counts are 0 in .retrieveGeneCounts
+- add Remove components without counts to violinplotExpression
+1.0.2:
+remove genome variable from violinplotExpression
+1.0.1:
+Correct bug in complex upset
+1.0.0:
+termination site defined to TES+50bp
+0.0.99:
+Definition of termination site is now done on TES+500 bp because overlapping genes were removed based on TSS-1000 bp

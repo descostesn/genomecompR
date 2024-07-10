@@ -2,7 +2,7 @@
 % Please edit documentation in R/setters.R
 \name{setSINE<-,genomicCompartments-method}
 \alias{setSINE<-,genomicCompartments-method}
-\title{setSINE}
+\title{Allocates SINE coordinates}
 \usage{
 setSINE(obj) <- value
 }
@@ -16,7 +16,7 @@ The updated object of class `genomicCompartments` with the new SINE
 regions.
 }
 \description{
-This method sets the SINE regions for an object of class
+This method stores the SINE coordinates in an object of class
 `genomicCompartments`.
 }
 \examples{

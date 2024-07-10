@@ -2,7 +2,7 @@
 % Please edit documentation in R/setters.R
 \name{setLINE<-,genomicCompartments-method}
 \alias{setLINE<-,genomicCompartments-method}
-\title{setLINE}
+\title{Allocate LINE coordinates}
 \usage{
 setLINE(obj) <- value
 }
@@ -16,8 +16,8 @@ The updated object of class `genomicCompartments` with the new LINE
 regions.
 }
 \description{
-This method sets the LINE regions for an object of class
-`genomicCompartments`.
+This method stores the LINE coordinates in an object of
+class `genomicCompartments`.
 }
 \examples{
 \dontrun{

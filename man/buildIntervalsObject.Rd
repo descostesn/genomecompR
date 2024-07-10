@@ -7,9 +7,10 @@
 buildIntervalsObject(peakspathvec, geneannos, includerepeats)
 }
 \arguments{
-\item{peakspathvec}{A named vector of file paths to peak files for various
-ChIP-seq and ATAC-seq data. Expected names include: "H3K27ac", "Ser5P",
-"Ser2P", "H3K4me3", "H3K27me3", "ATACSeq", "Suz12", "RING1B", "H3K9me3".}
+\item{peakspathvec}{A named vector of file paths to peak files in GFF format
+for various ChIP-seq and ATAC-seq data. Expected names include: "H3K27ac",
+"Ser5P", "Ser2P", "H3K4me3", "H3K27me3", "ATACSeq", "Suz12", "RING1B",
+"H3K9me3".}
 
 \item{geneannos}{A list of gene annotation files to be used for defining
 non-redundant gene sets and other features.}

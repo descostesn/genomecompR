@@ -2,7 +2,7 @@
 % Please edit documentation in R/setters.R
 \name{setLTR<-,genomicCompartments-method}
 \alias{setLTR<-,genomicCompartments-method}
-\title{setLTR}
+\title{Allocate LTR coordinates}
 \usage{
 setLTR(obj) <- value
 }
@@ -16,8 +16,8 @@ The updated object of class `genomicCompartments` with the new LTR
 regions.
 }
 \description{
-This method sets the LTR regions for an object of class
-`genomicCompartments`.
+This method stores the heterochromatin region coordinates in an object of
+class `genomicCompartments`.
 }
 \examples{
 \dontrun{

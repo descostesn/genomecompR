@@ -18,15 +18,15 @@ promoters assigned.
 }
 \description{
 This method identifies bivalent promoters by creating a merged GRanges object
-from peaks of H3K4me3 and H3K27me3 histone marks.
+from peaks of H3K4me3 and H3K27me3 histone marks at TSS-/+1Kb.
 }
 \examples{
 \dontrun{
 # Create a genomicCompartments object
 gc_obj <- genomeCompart(peakspathvec, geneannovec)
 # Identify bivalent promoters
-bivalentPromoters(gc_obj, peakspathvec = c(H3K4me3 = "path/to/H3K4me3.bed",
-H3K27me3 = "path/to/H3K27me3.bed"))
+bivalentPromoters(gc_obj, peakspathvec = c(H3K4me3 = "path/to/H3K4me3.gff",
+H3K27me3 = "path/to/H3K27me3.gff"))
 }
 
 }

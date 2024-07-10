@@ -31,17 +31,23 @@ Returns the modified `genomicCompartments` object with enhancers
 assigned.
 }
 \description{
-This method identifies enhancers based on the overlap of histone marks and
-ATAC-seq peaks.
+This method identifies active or poisedd enhancers based on the overlap of
+histone marks and ATAC-seq peaks.
+}
+\details{
+Active enhancers are defined as the overlap of H3K27ac/H3K4me1/ATAC-seq.
+Poised enhancers are defined as the overlap of H3K27me3/H3K4me1/PRC2.
+They should not overlap with the combination of UCSC refGene, NCBI RefSeq,
+and GENCODE VM25.
 }
 \examples{
 \dontrun{
 # Create a genomicCompartments object
 gc_obj <- genomeCompart(peakspathvec, geneannovec)
 # Identify active enhancers
-enhancer(gc_obj, peakspath1 = "path/to/H3K27ac.bed",
- peakspath2 = "path/to/H3K4me1.bed",
- peakspath3 = "path/to/ATAC-seq.bed",
+enhancer(gc_obj, peakspath1 = "path/to/H3K27ac.gff",
+ peakspath2 = "path/to/H3K4me1.gff",
+ peakspath3 = "path/to/ATAC-seq.gff",
 label1 = "H3K27ac", label2 = "H3K4me1", label3 = "ATAC-seq",
 statelabel = "active")
 }

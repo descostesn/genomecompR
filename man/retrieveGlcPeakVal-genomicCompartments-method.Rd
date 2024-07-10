@@ -2,7 +2,7 @@
 % Please edit documentation in R/methods-plot.R
 \name{retrieveGlcPeakVal,genomicCompartments-method}
 \alias{retrieveGlcPeakVal,genomicCompartments-method}
-\title{Retrieve Glucnac Peak Values}
+\title{Retrieve Glc Peak Values}
 \usage{
 retrieveGlcPeakVal(theobject, includerepeats, bwpath)
 }
@@ -13,22 +13,22 @@ retrieveGlcPeakVal(theobject, includerepeats, bwpath)
 analysis.}
 
 \item{bwpath}{Character string specifying the path to the bigWig file
-containing glucnac peak values.}
+containing glc peak values.}
 }
 \value{
-Returns the modified `genomicCompartments` object with glucnac peak
+Returns the modified `genomicCompartments` object with glc peak
 values assigned.
 }
 \description{
-This method retrieves glucnac peak values associated with genomic
+This method retrieves glc peak values associated with genomic
 compartments.
 }
 \examples{
 \dontrun{
 # Create a genomicCompartments object
 gc_obj <- genomeCompart(peakspathvec, geneannovec)
-# Retrieve glucnac peak values
-gc_obj <- retrieveGlcPeakVal(gc_obj, includerepeats = TRUE,
+# Retrieve glc peak values
+gc_obj <- retrieveGlcPeakVal(gc_obj, includerepeats = FALSE,
 bwpath = "path/to/bigWig/files")
 }
 

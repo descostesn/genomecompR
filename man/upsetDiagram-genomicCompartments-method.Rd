@@ -22,7 +22,7 @@ analysis.}
 Does not return anything but saves the plot to outpufolder.
 }
 \description{
-This method generates an UpSet diagram based on the overlap matrix of glucnac
+This method generates an UpSet diagram based on the overlap matrix of glc
 peaks and genomic compartments.
 }
 \examples{
@@ -31,7 +31,7 @@ peaks and genomic compartments.
 gc_obj <- genomeCompart(peakspathvec, geneannovec)
 # Generate UpSet diagram
 upsetDiagram(gc_obj, outputfolder = "results/upset_plots",
-includerepeats = TRUE, plotupset = TRUE)
+includerepeats = FALSE, plotupset = TRUE)
 }
 
 }

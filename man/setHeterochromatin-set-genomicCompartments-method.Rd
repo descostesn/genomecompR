@@ -2,7 +2,7 @@
 % Please edit documentation in R/setters.R
 \name{setHeterochromatin<-,genomicCompartments-method}
 \alias{setHeterochromatin<-,genomicCompartments-method}
-\title{setHeterochromatin}
+\title{Allocates heterochromatic region coordinates}
 \usage{
 setHeterochromatin(obj) <- value
 }
@@ -16,8 +16,8 @@ The updated object of class `genomicCompartments` with the new
 heterochromatin regions.
 }
 \description{
-This method sets the heterochromatin regions for an object of class
-`genomicCompartments`.
+This method stores the heterochromatin region coordinates in an object of
+class `genomicCompartments`.
 }
 \examples{
 \dontrun{

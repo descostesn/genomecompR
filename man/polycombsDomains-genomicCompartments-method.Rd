@@ -33,8 +33,8 @@ marks.
 # Create a genomicCompartments object
 gc_obj <- genomeCompart(peakspathvec, geneannovec)
 # Identify Polycomb domains
-polycombsDomains(gc_obj, peakspath1 = "path/to/SUZ12.bed",
- peakspath2 = "path/to/RING1B.bed",
+polycombsDomains(gc_obj, peakspath1 = "path/to/SUZ12.gff",
+ peakspath2 = "path/to/RING1B.gff",
  label1 = "SUZ12", label2 = "RING1B", domainname = "PolycombDomains")
 }
 

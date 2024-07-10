@@ -33,7 +33,7 @@ specific compartments based on the provided labels.
 gc_obj <- genomeCompart(peakspathvec, geneannovec)
 # Perform overlap analysis on TSS with H3K27ac peaks
 overlapOnGenes(gc_obj, regionlabel = "TSS", peaklabel = "H3K27ac",
-peakpath = "path/to/peaks.bed")
+peakpath = "path/to/peaks.gff")
 }
 
 }

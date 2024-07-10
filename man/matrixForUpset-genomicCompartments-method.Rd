@@ -12,7 +12,7 @@ matrixForUpset(theobject, includerepeats, glcpeakvalues)
 \item{includerepeats}{Logical indicating whether to include repeats in the
 analysis.}
 
-\item{glcpeakvalues}{Numeric vector of glucnac peak values.}
+\item{glcpeakvalues}{Numeric vector of glc peak values.}
 }
 \value{
 Returns the modified `genomicCompartments` object with the regions
@@ -20,14 +20,14 @@ matrix assigned.
 }
 \description{
 This method creates a matrix for generating an UpSet plot, indicating
-overlaps between glucnac peaks and genomic compartments.
+overlaps between glc peaks and genomic compartments.
 }
 \examples{
 \dontrun{
 # Create a genomicCompartments object
 gc_obj <- genomeCompart(peakspathvec, geneannovec)
 # Create matrix for UpSet plot
-matrixForUpset(gc_obj, includerepeats = TRUE, glcpeakvalues = c(1, 2, 3))
+matrixForUpset(gc_obj, includerepeats = FALSE, glcpeakvalues = c(1, 2, 3))
 }
 
 }

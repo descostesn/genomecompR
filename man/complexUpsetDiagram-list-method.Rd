@@ -20,16 +20,16 @@ No return value. The function generates and saves a complex upset
 plot in the specified output folder.
 }
 \description{
-This method generates a complex upset diagram to visualize overlaps of
-GlcNAc peaks with genomic compartments and their values across multiple
-replicates.
+This method generates a plot showing the upset diagram of the overlaps of
+GlcNAc peaks with different genomic compartments and the corresponding
+average binding values for each peak.
 }
 \examples{
 \dontrun{
 # Create a list of genomicCompartments objects
 gc_list <- list(gc_obj1, gc_obj2, gc_obj3)
 # Generate complex upset diagram
-complexUpsetDiagram(gc_list, includerepeats = TRUE,
+complexUpsetDiagram(gc_list, includerepeats = FALSE,
  outfold = "path/to/output_folder")
 }
 

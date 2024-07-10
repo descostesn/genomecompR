@@ -59,7 +59,7 @@ TES+1kb}
 
 \item{\code{regionsMatrix}}{A matrix representing various regions.}
 
-\item{\code{glcPeakVals}}{A list of glucnac peaks.}
+\item{\code{glcPeakVals}}{A list of glc peaks.}
 
 \item{\code{activePromWithPeaks}}{A `GRanges` object for active promoters with glc
 peaks.}
@@ -100,32 +100,33 @@ new("genomicCompartments",
 
 In the following snippets, x is a genomicCompartments object.
 
-getRefPeaks(x): Get the reference glc peaks
-getGenesFullAnno(x): Get the full gene annotations
-getCuratedAnno(x): Get the curated annotations
-getActiveProm(x): Get the active promoters
-getActiveEnh(x): Get the active enhancers
-getPoisedEnh(x): Get the poised enhancers
-getPcGDomain(x): Get the PcG domains
-getHeteroChrom(x): Get the heterochromatin regions
-getBivalentProm(x): Get the bivalent promoters
-getInitiation(x): Get the initiation regions
-getElongation(x): Get the elongation regions
-getTermination(x): Get the termination regions
-getSINE(x): Get the SINE regions
-getLINE(x): Get the LINE regions
-getLTR(x): Get the LTR regions
-getRegionsMatrix(x): Get the regions matrix
-getGlcPeakVal(x): Get the glc peak values
-getActivePromWithPeaks(x): Get the active promoters with glc peaks
-getActiveEnhWithPeaks(x): Get the active enhancers with glc peaks
-getPoisedEnhWithPeaks(x): Get the poised enhancers with glc peaks
-getPcGDomainWithPeaks(x): Get the PcG domains with glc peaks
-getHeteroChromWithPeaks(x): Get the heterochromatin regions with glc peaks
-getBivalentPromWithPeaks(x): Get the bivalent promoters with glc peaks
-getInitiationWithPeaks(x): Get the initiation regions with glc peaks
-getElongationWithPeaks(x): Get the elongation regions with glc peaks
-getTerminationWithPeaks(x): Get the termination regions with glc peaks
+getRefPeaks(x): Get the reference glc peaks \cr
+getGenesFullAnno(x): Get the full gene annotations \cr
+getCuratedAnno(x): Get the curated annotations \cr
+getActiveProm(x): Get the active promoters \cr
+getActiveEnh(x): Get the active enhancers \cr
+getPoisedEnh(x): Get the poised enhancers \cr
+getPcGDomain(x): Get the PcG domains \cr
+getHeteroChrom(x): Get the heterochromatin regions \cr
+getBivalentProm(x): Get the bivalent promoters \cr
+getInitiation(x): Get the initiation regions \cr
+getElongation(x): Get the elongation regions \cr
+getTermination(x): Get the termination regions \cr
+getSINE(x): Get the SINE regions \cr
+getLINE(x): Get the LINE regions \cr
+getLTR(x): Get the LTR regions \cr
+getRegionsMatrix(x): Get the regions matrix \cr
+getGlcPeakVal(x): Get the glc peak values \cr
+getActivePromWithPeaks(x): Get the active promoters with glc peaks \cr
+getActiveEnhWithPeaks(x): Get the active enhancers with glc peaks \cr
+getPoisedEnhWithPeaks(x): Get the poised enhancers with glc peaks \cr
+getPcGDomainWithPeaks(x): Get the PcG domains with glc peaks \cr
+getHeteroChromWithPeaks(x): Get the heterochromatin regions with glc
+peaks \cr
+getBivalentPromWithPeaks(x): Get the bivalent promoters with glc peaks \cr
+getInitiationWithPeaks(x): Get the initiation regions with glc peaks \cr
+getElongationWithPeaks(x): Get the elongation regions with glc peaks \cr
+getTerminationWithPeaks(x): Get the termination regions with glc peaks \cr
 }
 
 \section{Subsetting}{
@@ -133,29 +134,34 @@ getTerminationWithPeaks(x): Get the termination regions with glc peaks
 
 In the following snippets, x is a genomicCompartments object.
 
-setCurratedAnno(x, value): Set the curated annotations
-setActivePromoters(x, value): Set the active promoters
-setInitiationSer5PProm(x, value): Set the initiation Ser5P promoters
-setElongationSer2P(x, value): Set the elongation Ser2P regions
-setTermination(x, value): Set the termination regions
-setBivalentProm(x, value): Set the bivalent promoters
-setActiveEnhancer(x, value): Set the active enhancers
-setPoisedEnhancer(x, value): Set the poised enhancers
-setPolycombsDomain(x, value): Set the PcG domains
-setHeterochromatin(x, value): Set the heterochromatin regions
-setSINE(x, value): Set the SINE regions
-setLINE(x, value): Set the LINE regions
-setLTR(x, value): Set the LTR regions
-setRegionsMatrix(x, value): Set the regions matrix
-setGlcPeakVal(x, value): Set the glc peak values
-setActivePromWithPeaks(x, value): Set the active promoters with glc peaks
-setActiveEnhWithPeaks(x, value): Set the active enhancers with glc peaks
-setPoisedEnhWithPeaks(x, value): Set the poised enhancers with glc peaks
-setPcGDomainWithPeaks(x, value): Set the PcG domains with glc peaks
-setHeteroChromWithPeaks(x, value): Set the heterochromatin regions with glc peaks
-setBivalentPromWithPeaks(x, value): Set the bivalent promoters with glc peaks
-setInitiationWithPeaks(x, value): Set the initiation regions with glc peaks
-setElongationWithPeaks(x, value): Set the elongation regions with glc peaks
-setTerminationWithPeaks(x, value): Set the termination regions with glc peaks
+setCurratedAnno(x, value): Set the curated annotations \cr
+setActivePromoters(x, value): Set the active promoters \cr
+setInitiationSer5PProm(x, value): Set the initiation Ser5P promoters \cr
+setElongationSer2P(x, value): Set the elongation Ser2P regions \cr
+setTermination(x, value): Set the termination regions \cr
+setBivalentProm(x, value): Set the bivalent promoters \cr
+setActiveEnhancer(x, value): Set the active enhancers \cr
+setPoisedEnhancer(x, value): Set the poised enhancers \cr
+setPolycombsDomain(x, value): Set the PcG domains \cr
+setHeterochromatin(x, value): Set the heterochromatin regions \cr
+setSINE(x, value): Set the SINE regions \cr
+setLINE(x, value): Set the LINE regions \cr
+setLTR(x, value): Set the LTR regions \cr
+setRegionsMatrix(x, value): Set the regions matrix \cr
+setGlcPeakVal(x, value): Set the glc peak values \cr
+setActivePromWithPeaks(x, value): Set the active promoters with glc peaks \cr
+setActiveEnhWithPeaks(x, value): Set the active enhancers with glc peaks \cr
+setPoisedEnhWithPeaks(x, value): Set the poised enhancers with glc peaks \cr
+setPcGDomainWithPeaks(x, value): Set the PcG domains with glc peaks \cr
+setHeteroChromWithPeaks(x, value): Set the heterochromatin regions with glc
+peaks \cr
+setBivalentPromWithPeaks(x, value): Set the bivalent promoters with glc
+peaks \cr
+setInitiationWithPeaks(x, value): Set the initiation regions with glc
+peaks \cr
+setElongationWithPeaks(x, value): Set the elongation regions with glc
+peaks \cr
+setTerminationWithPeaks(x, value): Set the termination regions with glc
+peaks \cr
 }
 

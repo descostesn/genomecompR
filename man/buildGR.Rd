@@ -7,7 +7,7 @@
 buildGR(currentpath)
 }
 \arguments{
-\item{currentpath}{A character string representing the BED file path to read.
+\item{currentpath}{A character string representing the GFF file path to read.
 The file should contain tabular data with the following columns:
 \itemize{
   \item \code{V1} - Chromosome names
@@ -19,7 +19,7 @@ The file should contain tabular data with the following columns:
 }
 \value{
 A `GRanges` object with the specified genomic coordinates and
-annotations.
+feature names.
 }
 \description{
 This function reads a file containing genomic coordinates and constructs a
@@ -28,7 +28,7 @@ This function reads a file containing genomic coordinates and constructs a
 \examples{
 \dontrun{
 # Example file path
-path <- "path/to/genomic/coordinates/file.bed"
+path <- "path/to/genomic/coordinates/file.gff"
 # Build GRanges object
 gr <- buildGR(path)
 }

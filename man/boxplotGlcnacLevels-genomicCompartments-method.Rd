@@ -26,7 +26,8 @@ analysis.}
 Save the boxplot to outputfolder.
 }
 \description{
-This method generates boxplots of Glcnac levels across genomic compartments.
+This method generates boxplots of Glcnac levels across the different genomic
+compartments stored in the given genomicCompartments object.
 }
 \examples{
 \dontrun{
@@ -35,7 +36,7 @@ gc_obj <- genomeCompart(peakspathvec, geneannovec)
 # Generate boxplots of Glcnac levels
 gc_obj <- boxplotGlcnacLevels(gc_obj, bwpath = "path/to/glcnac_levels.bw",
                               outputfolder = "path/to/output_folder",
-                              includerepeats = TRUE, plotviolin = FALSE)
+                              includerepeats = FALSE, plotviolin = FALSE)
 }
 
 }

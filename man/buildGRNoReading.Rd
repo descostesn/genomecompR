@@ -8,7 +8,7 @@ buildGRNoReading(fi)
 }
 \arguments{
 \item{fi}{A data frame with columns representing genomic coordinates and
-other relevant information.
+other relevant information in GFF format.
 The expected columns are:
 \itemize{
   \item \code{V1} - Chromosome names
@@ -20,7 +20,7 @@ The expected columns are:
 }
 \value{
 A `GRanges` object with the specified genomic coordinates and
-annotations.
+feature names.
 }
 \description{
 This function constructs a `GRanges` object from a data frame.

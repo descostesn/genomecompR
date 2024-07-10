@@ -311,44 +311,7 @@ setMethod(
 ## violinPlotExpression
 #################################
 
-#' Generate Violin Plot for Gene Expression
-#'
-#' @description
-#' This method generates violin plots for gene expression across genomic
-#' compartments.
-#'
-#' @usage
-#' violinplotExpression(theobject, outfold, includerep, rnacounts, refseqpath,
-#'  geneidtab, countsannotype, plotviolin = FALSE)
-#'
-#' @param theobject An object of class `genomicCompartments`.
-#' @param outfold Character string specifying the output folder path for saving
-#' results.
-#' @param includerep Logical indicating whether to include repeats in the
-#' analysis.
-#' @param rnacounts Character string specifying the path to the RNA-seq count
-#' table.
-#' @param refseqpath Character string specifying the path to the original
-#' RefSeq annotation file.
-#' @param geneidtab Table containing genes ID.
-#' @param countsannotype Character string specifying the type of counts (e.g.,
-#' entrez or not) used for expression values.
-#' @param plotviolin Logical indicating whether to plot on current device
-#' (default is FALSE).
-#'
-#' @return Save the violin plot to outfold.
-#'
-#' @examples
-#' \dontrun{
-#' # Create a genomicCompartments object
-#' gc_obj <- genomeCompart(peakspathvec, geneannovec)
-#' # Generate violin plots for gene expression
-#' gc_obj <- violinplotExpression(gc_obj, outfold = "path/to/output_folder",
-#'  includerep = TRUE, rnacounts = "path/to/rna_counts",
-#'  refseqpath = "path/to/refseq_annotation",
-#'  geneidtab = geneidtab, countsannotype = "entrez", plotviolin = TRUE)
-#' }
-#'
+
 .violinPlot <- function(mean_list, outputfilename, outputfolder, plotviolin) { # nolint
 
     message("Building data frame for violin plot")
@@ -540,7 +503,44 @@ setMethod(
     return(countsvectpmlist)
 }
 
-
+#' Generate Violin Plot for Gene Expression
+#'
+#' @description
+#' This method generates violin plots for gene expression across genomic
+#' compartments.
+#'
+#' @usage
+#' violinplotExpression(theobject, outfold, includerep, rnacounts, refseqpath,
+#'  geneidtab, countsannotype, plotviolin = FALSE)
+#'
+#' @param theobject An object of class `genomicCompartments`.
+#' @param outfold Character string specifying the output folder path for saving
+#' results.
+#' @param includerep Logical indicating whether to include repeats in the
+#' analysis.
+#' @param rnacounts Character string specifying the path to the RNA-seq count
+#' table.
+#' @param refseqpath Character string specifying the path to the original
+#' RefSeq annotation file.
+#' @param geneidtab Table containing genes ID.
+#' @param countsannotype Character string specifying the type of counts (e.g.,
+#' entrez or not) used for expression values.
+#' @param plotviolin Logical indicating whether to plot on current device
+#' (default is FALSE).
+#'
+#' @return Save the violin plot to outfold.
+#'
+#' @examples
+#' \dontrun{
+#' # Create a genomicCompartments object
+#' gc_obj <- genomeCompart(peakspathvec, geneannovec)
+#' # Generate violin plots for gene expression
+#' violinplotExpression(gc_obj, outfold = "path/to/output_folder",
+#'  includerep = TRUE, rnacounts = "path/to/rna_counts",
+#'  refseqpath = "path/to/refseq_annotation",
+#'  geneidtab = geneidtab, countsannotype = "entrez", plotviolin = TRUE)
+#' }
+#'
 setMethod(
     f = "violinplotExpression",
 

@@ -1,3 +1,13 @@
+.writeCoord <- function(outfold, subfoldname, resultcoord, currentname, # nolint
+        extensionname) {
+
+    outfold <- file.path(outfold, subfoldname)
+    if (!file.exists(outfold)) dir.create(outfold)
+    write.table(resultcoord,
+            file = file.path(outfold, paste0(currentname, extensionname)),
+            sep = "\t", quote = FALSE, row.names = FALSE, col.names = FALSE)
+}
+
 #' Output Glc Peaks Coordinates per Compartment
 #'
 #' @usage
@@ -28,16 +38,6 @@
 #' includerepeats = TRUE)
 #' }
 #'
-.writeCoord <- function(outfold, subfoldname, resultcoord, currentname, # nolint
-        extensionname) {
-
-    outfold <- file.path(outfold, subfoldname)
-    if (!file.exists(outfold)) dir.create(outfold)
-    write.table(resultcoord,
-            file = file.path(outfold, paste0(currentname, extensionname)),
-            sep = "\t", quote = FALSE, row.names = FALSE, col.names = FALSE)
-}
-
 setMethod(
 
         f = "outputGlcPeaksCoordPerCompartment",

@@ -196,8 +196,8 @@ setMethod(
 #' Identify Enhancers
 #'
 #' @description
-#' This method identifies enhancers based on the overlap of histone marks and
-#' ATAC-seq peaks.
+#' This method identifies active or poisedd enhancers based on the overlap of
+#' histone marks and ATAC-seq peaks.
 #'
 #' @usage
 #' enhancer(theobject, peakspath1, peakspath2, peakspath3, label1, label2,
@@ -213,6 +213,12 @@ setMethod(
 #' @param label3 Label for the third histone mark or ATAC-seq.
 #' @param statelabel Label indicating the state of enhancers ('active' or
 #' 'poised').
+#'
+#' @details
+#' Active enhancers are defined as the overlap of H3K27ac/H3K4me1/ATAC-seq.
+#' Poised enhancers are defined as the overlap of H3K27me3/H3K4me1/PRC2.
+#' They should not overlap with the combination of UCSC refGene, NCBI RefSeq,
+#' and GENCODE VM25.
 #'
 #' @return Returns the modified `genomicCompartments` object with enhancers
 #' assigned.

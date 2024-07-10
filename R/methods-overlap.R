@@ -1,3 +1,32 @@
+.defineIntervals <- function(grcuratedanno, regionlabel) { # nolint
+
+    if (isTRUE(all.equal(regionlabel, "TSS")))
+        gr <- GenomicRanges::GRanges(
+                seqnames = as.character(GenomicRanges::seqnames(grcuratedanno)),
+                ranges = IRanges::IRanges(start =
+                    GenomicRanges::start(grcuratedanno) - 1000,
+                        end = GenomicRanges::start(grcuratedanno) + 1000),
+                strand = GenomicRanges::strand(grcuratedanno))
+    else if (isTRUE(all.equal(regionlabel, "GBTES")))
+        gr <- GenomicRanges::GRanges(
+                seqnames = as.character(GenomicRanges::seqnames(grcuratedanno)),
+                ranges = IRanges::IRanges(start =
+                    GenomicRanges::start(grcuratedanno) + 1000,
+                        end = GenomicRanges::end(grcuratedanno)),
+                strand = GenomicRanges::strand(grcuratedanno))
+    else if (isTRUE(all.equal(regionlabel, "TES")))
+        gr <- GenomicRanges::GRanges(
+                seqnames = as.character(GenomicRanges::seqnames(grcuratedanno)),
+                ranges = IRanges::IRanges(
+                    start = GenomicRanges::end(grcuratedanno), 
+                    end = GenomicRanges::end(grcuratedanno) + 50),
+                strand = GenomicRanges::strand(grcuratedanno))
+    else
+        stop("The label ", regionlabel, " is not recognized")
+
+    return(gr)
+}
+
 #' Overlap Peaks on Genes
 #'
 #' @description
@@ -28,35 +57,6 @@
 #' peakpath = "path/to/peaks.bed")
 #' }
 #'
-.defineIntervals <- function(grcuratedanno, regionlabel) { # nolint
-
-    if (isTRUE(all.equal(regionlabel, "TSS")))
-        gr <- GenomicRanges::GRanges(
-                seqnames = as.character(GenomicRanges::seqnames(grcuratedanno)),
-                ranges = IRanges::IRanges(start =
-                    GenomicRanges::start(grcuratedanno) - 1000,
-                        end = GenomicRanges::start(grcuratedanno) + 1000),
-                strand = GenomicRanges::strand(grcuratedanno))
-    else if (isTRUE(all.equal(regionlabel, "GBTES")))
-        gr <- GenomicRanges::GRanges(
-                seqnames = as.character(GenomicRanges::seqnames(grcuratedanno)),
-                ranges = IRanges::IRanges(start =
-                    GenomicRanges::start(grcuratedanno) + 1000,
-                        end = GenomicRanges::end(grcuratedanno)),
-                strand = GenomicRanges::strand(grcuratedanno))
-    else if (isTRUE(all.equal(regionlabel, "TES")))
-        gr <- GenomicRanges::GRanges(
-                seqnames = as.character(GenomicRanges::seqnames(grcuratedanno)),
-                ranges = IRanges::IRanges(
-                    start = GenomicRanges::end(grcuratedanno), 
-                    end = GenomicRanges::end(grcuratedanno) + 50),
-                strand = GenomicRanges::strand(grcuratedanno))
-    else
-        stop("The label ", regionlabel, " is not recognized")
-
-    return(gr)
-}
-
 setMethod( # nolint
 
         f = "overlapOnGenes",

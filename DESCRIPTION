@@ -51,3 +51,4 @@ Collate:
     'setters.R'
     'utils.R'
     'biomart.R'
+RoxygenNote: 7.1.2

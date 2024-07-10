@@ -45,7 +45,7 @@ buildGRNoReading <- function(fi) { # nolint
 #' @usage
 #' buildGR(currentpath)
 #'
-#' @param currentpath A character string representing the BED file path to read.
+#' @param currentpath A character string representing the GFF file path to read.
 #' The file should contain tabular data with the following columns:
 #' \itemize{
 #'   \item \code{V1} - Chromosome names
@@ -61,7 +61,7 @@ buildGRNoReading <- function(fi) { # nolint
 #' @examples
 #' \dontrun{
 #' # Example file path
-#' path <- "path/to/genomic/coordinates/file.bed"
+#' path <- "path/to/genomic/coordinates/file.gff"
 #' # Build GRanges object
 #' gr <- buildGR(path)
 #' }

@@ -35,7 +35,7 @@
 #' gc_obj <- genomeCompart(peakspathvec, geneannovec)
 #' # Output glucnac peaks coordinates per compartment
 #' outputGlcPeaksCoordPerCompartment(gc_obj, outputfolder, glcpeakspath,
-#' includerepeats = TRUE)
+#' includerepeats = FALSE)
 #' }
 #'
 setMethod(

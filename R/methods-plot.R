@@ -58,7 +58,7 @@
 #' # Create a genomicCompartments object
 #' gc_obj <- genomeCompart(peakspathvec, geneannovec)
 #' # Create matrix for UpSet plot
-#' matrixForUpset(gc_obj, includerepeats = TRUE, glcpeakvalues = c(1, 2, 3))
+#' matrixForUpset(gc_obj, includerepeats = FALSE, glcpeakvalues = c(1, 2, 3))
 #' }
 #'
 setMethod(
@@ -159,7 +159,7 @@ setMethod(
 #' gc_obj <- genomeCompart(peakspathvec, geneannovec)
 #' # Generate UpSet diagram
 #' upsetDiagram(gc_obj, outputfolder = "results/upset_plots",
-#' includerepeats = TRUE, plotupset = TRUE)
+#' includerepeats = FALSE, plotupset = TRUE)
 #' }
 #'
 setMethod(
@@ -265,7 +265,7 @@ setMethod(
 #' # Create a genomicCompartments object
 #' gc_obj <- genomeCompart(peakspathvec, geneannovec)
 #' # Retrieve glucnac peak values
-#' gc_obj <- retrieveGlcPeakVal(gc_obj, includerepeats = TRUE,
+#' gc_obj <- retrieveGlcPeakVal(gc_obj, includerepeats = FALSE,
 #' bwpath = "path/to/bigWig/files")
 #' }
 #'
@@ -625,7 +625,7 @@ setMethod(
 #' # Generate boxplots of Glcnac levels
 #' gc_obj <- boxplotGlcnacLevels(gc_obj, bwpath = "path/to/glcnac_levels.bw",
 #'                               outputfolder = "path/to/output_folder",
-#'                               includerepeats = TRUE, plotviolin = FALSE)
+#'                               includerepeats = FALSE, plotviolin = FALSE)
 #' }
 #'
 setMethod(
@@ -741,7 +741,7 @@ setMethod(
 #' # Create a list of genomicCompartments objects
 #' gc_list <- list(gc_obj1, gc_obj2, gc_obj3)
 #' # Generate complex upset diagram
-#' complexUpsetDiagram(gc_list, includerepeats = TRUE,
+#' complexUpsetDiagram(gc_list, includerepeats = FALSE,
 #'  outfold = "path/to/output_folder")
 #' }
 #'

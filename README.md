@@ -23,27 +23,62 @@ This R package is provided to describe the method section of an accompanying art
 
 ## Installation
 
-This package is made to run on R-4.2.0:
+This package is made to run on R-4.2.0. See installation instruction [here](https://cran.r-project.org/) or use:
 
 ```
-## with mamba - not tested yet
+## with mamba
 mamba create -n genomecompr
 mamba activate genomecompr
 mamba install r-base=4.2.0
-
-## with singularity - not tested yet
-XXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
 Here is the installation code to run from R:
 
 ```
 ## not tested yet
+install.packages("MASS")
+install.packages("remotes")
+library("remotes")
+install_version("ggplot2", version="3.4.1")
 
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+ERROR: dependencies ‘MASS’, ‘mgcv’ are not available for package ‘ggplot2’
 
 
-tools (== 4.2.0), GenomicRanges (== 1.50.2), tibble (== 3.1.6), ggplot2 (== 3.4.1), ggupset (== 0.3.0), IRanges (== 2.32.0), parallel (== 4.2.0), S4Vectors (== 0.36.2), GenomeInfoDb (== 1.34.9), rtracklayer (== 1.58.0), ComplexUpset (== 1.3.3), chipenrich (== 2.22.0), biomaRt (== 2.54.1)
+install("ggplot2", version="3.4.1")
+install("tibble", version="3.1.6")
+install("ggupset", version="0.3.0")
+install("ComplexUpset", version="1.3.3")
+
+install("S4Vectors", version="0.36.2")
+install("GenomeInfoDb", version="1.34.9")
+install("rtracklayer", version="1.58.0")
+install("biomaRt", version="2.54.1")
+install("IRanges", version="2.32.0")
+install("GenomicRanges", version="1.50.2")
+install("chipenrich", version="2.22.0")
+
+
+
+  package,
+  version = NULL,
+  dependencies = NA,
+  upgrade = c("default", "ask", "always", "never"),
+  force = FALSE,
+  quiet = FALSE,
+  build = FALSE,
+  build_opts = c("--no-resave-data", "--no-manual", "--no-build-vignettes"),
+  build_manual = FALSE,
+  build_vignettes = FALSE,
+  repos = getOption("repos"),
+  type = "source",
+
+  install.packages("BiocManager", repos = "https://cloud.r-project.org")
+library(BiocManager)
+
+  ...
+)
+
+
 ```
 
 ## Usage

@@ -7,7 +7,7 @@
 #' buildGRNoReading(fi)
 #'
 #' @param fi A data frame with columns representing genomic coordinates and
-#' other relevant information.
+#' other relevant information in GFF format.
 #' The expected columns are:
 #' \itemize{
 #'   \item \code{V1} - Chromosome names

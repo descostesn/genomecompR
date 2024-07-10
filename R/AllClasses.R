@@ -43,7 +43,7 @@
 #' @slot LINE A `GRanges` object for LINE elements.
 #' @slot LTR A `GRanges` object for LTR elements.
 #' @slot regionsMatrix A matrix representing various regions.
-#' @slot glcPeakVals A list of glucnac peaks.
+#' @slot glcPeakVals A list of glc peaks.
 #' @slot activePromWithPeaks A `GRanges` object for active promoters with glc
 #' peaks.
 #' @slot activeEnhWithPeaks A `GRanges` object for active enhancers with glc

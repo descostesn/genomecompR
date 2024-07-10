@@ -15,13 +15,13 @@
 #'                        includerepeats)
 #'
 #' @description
-#' This method calculates the overlap of glucnac peaks with each compartment
+#' This method calculates the overlap of glc peaks with each compartment
 #' defined in the `genomicCompartments` object and outputs the coordinates of
 #' the overlapping peaks to specified output formats (GFF and BED).
 #'
 #' @param theobject An object of class `genomicCompartments`.
 #' @param outputfolder Path to the folder where output files will be written.
-#' @param glcpeakspath Path to the GFF file containing glucnac peaks
+#' @param glcpeakspath Path to the GFF file containing glc peaks
 #' coordinates.
 #' @param includerepeats Logical indicating whether to include repeat regions
 #' in the analysis.
@@ -33,7 +33,7 @@
 #' \dontrun{
 #' # Create a genomicCompartments object
 #' gc_obj <- genomeCompart(peakspathvec, geneannovec)
-#' # Output glucnac peaks coordinates per compartment
+#' # Output glc peaks coordinates per compartment
 #' outputGlcPeaksCoordPerCompartment(gc_obj, outputfolder, glcpeakspath,
 #' includerepeats = FALSE)
 #' }

@@ -1,7 +1,7 @@
 .checkGFF <- function(filepath) { # nolint
 
     if (!isTRUE(all.equal(tools::file_ext(filepath), "gff")))
-        stop("The glucnac peaks should be in gff format")
+        stop("The glc peaks should be in GFF format")
 }
 
 .filterAnno <- function(currenttable, currentname) { # nolint
@@ -30,7 +30,7 @@
 #' genomeCompart(peakspathvec, geneannovec)
 #'
 #' @description
-#' This function reads glucnac peaks and gene annotations, converts them to
+#' This function reads glc peaks and gene annotations, converts them to
 #' `GRanges` and `GRangesList` objects, respectively, and returns a
 #' `genomicCompartments` object. It processes the input files by filtering out
 #' unwanted annotations and chromosomes.
@@ -52,8 +52,8 @@
 genomeCompart <- function(peakspathvec, geneannovec) { # nolint
 
 
-    ## Reading the glucnac peaks and converting to GRanges
-    message("Reading the glucnac peaks and converting to GRanges")
+    ## Reading the glc peaks and converting to GRanges
+    message("Reading the glc peaks and converting to GRanges")
     .checkGFF(peakspathvec[1])
     grglc <- buildGR(peakspathvec[1]) # nolint
 

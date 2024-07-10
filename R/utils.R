@@ -94,7 +94,7 @@ buildGR <- function(currentpath) { # nolint
     complist <- aslist(theobject, includerepeats) # nolint
     compgrlist <- GenomicRanges::GRangesList(complist)
 
-    ## Retrieve the GR of glucnac peaks
+    ## Retrieve the GR of glc peaks
     querygr <- getRefPeaks(theobject) # nolint
 
     ## Perform the overlap

@@ -40,7 +40,7 @@
 #'
 #' @description
 #' This method creates a matrix for generating an UpSet plot, indicating
-#' overlaps between glucnac peaks and genomic compartments.
+#' overlaps between glc peaks and genomic compartments.
 #'
 #' @usage
 #' matrixForUpset(theobject, includerepeats, glcpeakvalues)
@@ -48,7 +48,7 @@
 #' @param theobject An object of class `genomicCompartments`.
 #' @param includerepeats Logical indicating whether to include repeats in the
 #' analysis.
-#' @param glcpeakvalues Numeric vector of glucnac peak values.
+#' @param glcpeakvalues Numeric vector of glc peak values.
 #'
 #' @return Returns the modified `genomicCompartments` object with the regions
 #' matrix assigned.
@@ -92,7 +92,7 @@ setMethod(
             names(regionsperpeaklist) <- coordvec[
                     as.numeric(names(regionsperpeaklist))]
 
-            ## Create a matrix with each row corresponding to a glucnac peak
+            ## Create a matrix with each row corresponding to a glc peak
             ## and each column to a genomic compartments. TRUE value indicates
             ## an overlap.
             regionsmatrix <- .matPerPeakComp(regionsperpeaklist, glcpeakvalues)
@@ -137,7 +137,7 @@ setMethod(
 #' Generate UpSet Diagram
 #'
 #' @description
-#' This method generates an UpSet diagram based on the overlap matrix of glucnac
+#' This method generates an UpSet diagram based on the overlap matrix of glc
 #' peaks and genomic compartments.
 #'
 #' @usage
@@ -242,10 +242,10 @@ setMethod(
 }
 
 
-#' Retrieve Glucnac Peak Values
+#' Retrieve Glc Peak Values
 #'
 #' @description
-#' This method retrieves glucnac peak values associated with genomic
+#' This method retrieves glc peak values associated with genomic
 #' compartments.
 #'
 #' @usage
@@ -255,16 +255,16 @@ setMethod(
 #' @param includerepeats Logical indicating whether to include repeats in the
 #' analysis.
 #' @param bwpath Character string specifying the path to the bigWig file
-#' containing glucnac peak values.
+#' containing glc peak values.
 #'
-#' @return Returns the modified `genomicCompartments` object with glucnac peak
+#' @return Returns the modified `genomicCompartments` object with glc peak
 #' values assigned.
 #'
 #' @examples
 #' \dontrun{
 #' # Create a genomicCompartments object
 #' gc_obj <- genomeCompart(peakspathvec, geneannovec)
-#' # Retrieve glucnac peak values
+#' # Retrieve glc peak values
 #' gc_obj <- retrieveGlcPeakVal(gc_obj, includerepeats = FALSE,
 #' bwpath = "path/to/bigWig/files")
 #' }

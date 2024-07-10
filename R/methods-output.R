@@ -90,33 +90,6 @@ setMethod(
 #################################
 
 
-#' Extract Compartment Coordinates with Peaks
-#'
-#' @usage
-#' extractCompCoordWithPeak(theobject, outfold, includerep)
-#'
-#' @description
-#' This method performs overlap analysis between reference peaks and each
-#' compartment defined in the `genomicCompartments` object. It extracts
-#' compartments containing peaks and outputs their coordinates in GFF format.
-#'
-#' @param theobject An object of class `genomicCompartments`.
-#' @param outfold Path to the folder where output files will be written.
-#' @param includerep Logical indicating whether to include repeat regions in
-#' the analysis.
-#'
-#' @return Returns the modified `genomicCompartments` object with compartments
-#' containing peaks.
-#'
-#' @examples
-#' \dontrun{
-#' # Create a genomicCompartments object
-#' gc_obj <- genomeCompart(peakspathvec, geneannovec)
-#' # Extract compartment coordinates with peaks
-#' extractCompCoordWithPeak(gc_obj, outfold = "output_folder",
-#'  includerep = TRUE)
-#' }
-#'
 .setCompWithPeaks <- function(theobject, currentcompwithpeak, compname) { # nolint
 
     switch(compname,
@@ -154,6 +127,33 @@ setMethod(
                     group = "."))
 }
 
+#' Extract Compartment Coordinates with Peaks
+#'
+#' @usage
+#' extractCompCoordWithPeak(theobject, outfold, includerep)
+#'
+#' @description
+#' This method performs overlap analysis between reference peaks and each
+#' compartment defined in the `genomicCompartments` object. It extracts
+#' compartments containing peaks and outputs their coordinates in GFF format.
+#'
+#' @param theobject An object of class `genomicCompartments`.
+#' @param outfold Path to the folder where output files will be written.
+#' @param includerep Logical indicating whether to include repeat regions in
+#' the analysis.
+#'
+#' @return Returns the modified `genomicCompartments` object with compartments
+#' containing peaks.
+#'
+#' @examples
+#' \dontrun{
+#' # Create a genomicCompartments object
+#' gc_obj <- genomeCompart(peakspathvec, geneannovec)
+#' # Extract compartment coordinates with peaks
+#' extractCompCoordWithPeak(gc_obj, outfold = "output_folder",
+#'  includerep = TRUE)
+#' }
+#'
 setMethod(
 
         f = "extractCompCoordWithPeak",

@@ -720,9 +720,9 @@ setMethod(
 #' Generate Complex Upset Diagram
 #'
 #' @description
-#' This method generates a complex upset diagram to visualize overlaps of
-#' GlcNAc peaks with genomic compartments and their values across multiple
-#' replicates.
+#' This method generates a plot showing the upset diagram of the overlaps of
+#' GlcNAc peaks with different genomic compartments and the corresponding
+#' average binding values for each peak.
 #'
 #' @usage
 #' complexUpsetDiagram(theobject, includerepeats, outfold)

@@ -599,7 +599,8 @@ setMethod(
 #' Generate Boxplot of Glcnac Levels
 #'
 #' @description
-#' This method generates boxplots of Glcnac levels across genomic compartments.
+#' This method generates boxplots of Glcnac levels across the different genomic
+#' compartments stored in the given genomicCompartments object.
 #'
 #' @usage
 #' boxplotGlcnacLevels(theobject, bwpath, outputfolder, includerepeats,

@@ -1,6 +1,6 @@
 # genomecompR
 
-This R package is provided to describe the method section of an accompanying article. It does not aim to be extended in terms of features. Please respect the packages version described below for full functionality.
+This R package is provided to describe the method section of an accompanying article. It does not aim to be extended in terms of features. Please respect the R version described below for full functionality.
 
 ## Description
 
@@ -21,6 +21,24 @@ This R package is provided to describe the method section of an accompanying art
 
 *genomecompR* also provides several plotting methods: upsetDiagram, boxplotGlcnacLevels, outputGlcPeaksCoordPerCompartment, retrieveGlcPeakVal, complexUpsetDiagram, extractCompCoordWithPeak, violinplotExpression
 
+## Installation
+
+This package is made to run on R-4.2.0. See installation instruction [here](https://cran.r-project.org/) or use:
+
+```
+## with mamba
+mamba create -n genomecompr
+mamba activate genomecompr
+mamba install r-base=4.2.0
+```
+
+Here is the installation code to run from R:
+
+```
+install.packages("BiocManager", repos = "https://cloud.r-project.org")
+library(BiocManager)
+install(c("ggplot2", "ggupset", "ComplexUpset", "S4Vectors", "GenomeInfoDb", "rtracklayer", "biomaRt", "IRanges", "GenomicRanges", "chipenrich"), depedencies = TRUE)
+```
 
 ## Manual
 

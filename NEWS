@@ -1,4 +1,6 @@
 1.0.5:
+- In extractCompCoordWithPeak, add the boolean includeenhancers = FALSE as parameter
+- Modify the code of aslist to make enhancer inclusion optional
 - In buildIntervalsObject, add the boolean enhancers parameter set to FALSE and update documentation
 - In method complexUpsetDiagram, set includerep = FALSE and update documentation
 - In method extractCompCoordWithPeak, set includerep = FALSE and update documentation

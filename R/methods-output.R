@@ -154,6 +154,8 @@ setMethod(
 #' @param outfold Path to the folder where output files will be written.
 #' @param includerep Logical indicating whether to include repeat regions in
 #' the analysis. Default is FALSE.
+#' @param includeenhancers Logical indicating whether to include enhancers in
+#' the analysis. Default is FALSE.
 #'
 #' @return Returns the modified `genomicCompartments` object with compartments
 #' containing peaks.
@@ -163,8 +165,7 @@ setMethod(
 #' # Create a genomicCompartments object
 #' gc_obj <- genomeCompart(peakspathvec, geneannovec)
 #' # Extract compartment coordinates with peaks
-#' extractCompCoordWithPeak(gc_obj, outfold = "output_folder",
-#'  includerep = TRUE)
+#' extractCompCoordWithPeak(gc_obj, outfold = "output_folder")
 #' }
 #'
 setMethod(
@@ -173,15 +174,16 @@ setMethod(
 
         signature = "genomicCompartments",
 
-        definition = function(theobject, outfold, includerep = FALSE) {
+        definition = function(theobject, outfold, includerep = FALSE,
+            includeenhancers = FALSE) {
 
             ## Check the Object
             validObject(theobject)
 
-            ## PART 1: Overlap with the different compartments and retrieve 
+            ## Overlap with the different compartments and retrieve
             ## peaks per compartment type
             message("Performing overlap with each compartment")
-            complist <- aslist(theobject, includerep) # nolint
+            complist <- aslist(theobject, includerep, includeenhancers) # nolint
             querygr <- getRefPeaks(theobject) # nolint
 
             invisible(mapply(function(currentcomp, compname, peaksgr, outfold) {

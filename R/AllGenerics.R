@@ -217,7 +217,7 @@ setGeneric(
 setGeneric(
  name = "aslist",
 
-        def = function(theobject, includerepeats) {
+        def = function(theobject, includerepeats, includeenhancers) {
             standardGeneric("aslist")
         },
         signature = "theobject")
@@ -581,7 +581,8 @@ setGeneric(
 
         name = "extractCompCoordWithPeak",
 
-        def = function(theobject, outfold, includerep = FALSE) {
+        def = function(theobject, outfold, includerep = FALSE,
+            includeenhancers = FALSE) {
             standardGeneric("extractCompCoordWithPeak")
         },
         signature = "theobject")

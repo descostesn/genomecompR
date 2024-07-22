@@ -529,7 +529,8 @@ setGeneric(
 
         name = "matrixForUpset",
 
-        def = function(theobject, includerepeats, glcpeakvalues) {
+        def = function(theobject, includerepeats, includeenhancers,
+            glcpeakvalues) {
             standardGeneric("matrixForUpset")
         },
         signature = "theobject")

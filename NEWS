@@ -1,4 +1,12 @@
 1.0.5:
+- Change .plotComplexUpset to make the violin plot on top optional
+- add parameter includeenhancers to multiple methods and functions
+- In extractCompCoordWithPeak, add the boolean includeenhancers = FALSE as parameter
+- Modify the code of aslist to make enhancer inclusion optional
+- In buildIntervalsObject, add the boolean enhancers parameter set to FALSE and update documentation
+- In method complexUpsetDiagram, set includerep = FALSE and update documentation
+- In method extractCompCoordWithPeak, set includerep = FALSE and update documentation
+- In buildIntervalsObject, set default value of includerepeats to FALSE and update documentation
 - Make some parameters default in checkParams
 1.0.4:
 Add documentation

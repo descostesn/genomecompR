@@ -217,7 +217,7 @@ setGeneric(
 setGeneric(
  name = "aslist",
 
-        def = function(theobject, includerepeats) {
+        def = function(theobject, includerepeats, includeenhancers) {
             standardGeneric("aslist")
         },
         signature = "theobject")
@@ -529,7 +529,8 @@ setGeneric(
 
         name = "matrixForUpset",
 
-        def = function(theobject, includerepeats, glcpeakvalues) {
+        def = function(theobject, includerepeats, includeenhancers,
+            glcpeakvalues) {
             standardGeneric("matrixForUpset")
         },
         signature = "theobject")
@@ -539,7 +540,8 @@ setGeneric(
 
         name = "retrieveGlcPeakVal",
 
-        def = function(theobject, includerepeats, bwpath) {
+        def = function(theobject, bwpath, includerepeats = FALSE,
+            includeenhancers = FALSE) {
             standardGeneric("retrieveGlcPeakVal")
         },
         signature = "theobject")
@@ -560,7 +562,8 @@ setGeneric(
 
         name = "outputGlcPeaksCoordPerCompartment",
 
-        def = function(theobject, outputfolder, glcpeakspath, includerepeats) {
+        def = function(theobject, outputfolder, glcpeakspath, includerepeats,
+            includeenhancers) {
             standardGeneric("outputGlcPeaksCoordPerCompartment")
         },
         signature = "theobject")
@@ -581,7 +584,8 @@ setGeneric(
 
         name = "extractCompCoordWithPeak",
 
-        def = function(theobject, outfold, includerep) {
+        def = function(theobject, outfold, includerep = FALSE,
+            includeenhancers = FALSE) {
             standardGeneric("extractCompCoordWithPeak")
         },
         signature = "theobject")
@@ -596,7 +600,8 @@ setGeneric(
 
         name = "complexUpsetDiagram",
 
-        def = function(theobject, includerepeats, outfold) {
+        def = function(theobject, outfold, includerepeats = FALSE,
+            includeenhancers = FALSE, plotglclevels = FALSE, minsize = 10) {
             standardGeneric("complexUpsetDiagram")
         },
         signature = "theobject")

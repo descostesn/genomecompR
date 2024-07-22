@@ -48,6 +48,8 @@
 #' @param theobject An object of class `genomicCompartments`.
 #' @param includerepeats Logical indicating whether to include repeats in the
 #' analysis.
+#' @param includeenhancers Logical indicating whether to include enhancers in
+#' the analysis.
 #' @param glcpeakvalues Numeric vector of glc peak values.
 #'
 #' @return Returns the modified `genomicCompartments` object with the regions
@@ -67,17 +69,20 @@ setMethod(
 
         signature = "genomicCompartments",
 
-        definition = function(theobject, includerepeats, glcpeakvalues) {
+        definition = function(theobject, includerepeats, includeenhancers,
+            glcpeakvalues) {
 
             ## Check the Object
             validObject(theobject)
 
             ## Perform the overlap
             message("Performing overlap")
-            resultoverlap <- .overlapGlucnacComp(theobject, includerepeats) # nolint
+            resultoverlap <- .overlapGlucnacComp(theobject, includerepeats, # nolint
+                includeenhancers)
 
             ## Creata a list with each overlapping compartments for each peak
-            compnamevec <- names(aslist(theobject, includerepeats)) # nolint
+            complist <- aslist(theobject, includerepeats, includeenhancers) # nolint
+            compnamevec <- names(complist)
             subjecthitsnames <- compnamevec[
                     S4Vectors::subjectHits(resultoverlap)]
             regionsperpeaklist <- split(subjecthitsnames,
@@ -250,12 +255,14 @@ setMethod(
 #'
 #' @usage
 #' retrieveGlcPeakVal(theobject, includerepeats, bwpath)
-#' 
+#'
 #' @param theobject An object of class `genomicCompartments`.
-#' @param includerepeats Logical indicating whether to include repeats in the
-#' analysis.
 #' @param bwpath Character string specifying the path to the bigWig file
 #' containing glc peak values.
+#' @param includerepeats Logical indicating whether to include repeats in the
+#' analysis. Default is FALSE.
+#' @param includeenhancers Logical indicating whether to include enhancers in
+#' the analysis. Default is FALSE.
 #'
 #' @return Returns the modified `genomicCompartments` object with glc peak
 #' values assigned.
@@ -275,7 +282,8 @@ setMethod(
 
         signature = "genomicCompartments",
 
-        definition = function(theobject, includerepeats, bwpath) {
+        definition = function(theobject, bwpath, includerepeats = FALSE,
+            includeenhancers = FALSE) {
 
             ## Check the Object
             validObject(theobject)
@@ -283,7 +291,7 @@ setMethod(
             ## Considering overlapping glcnac peaks only
             ## Retrieving lists of GR for glcnac peaks and compartments
             querygr <- getRefPeaks(theobject) # nolint
-            complist <- aslist(theobject, includerepeats) # nolint
+            complist <- aslist(theobject, includerepeats, includeenhancers) # nolint
 
             ## Retrieving glcnac peak on each compartments
             glclist <- .overlapByComp(complist, querygr)
@@ -667,12 +675,13 @@ setMethod(
 ## complexUpsetDiagram
 #################################
 
-.createMatUpset <- function(theobject, glclist, includerepeats) { # nolint
+.createMatUpset <- function(theobject, glclist, includerepeats, # nolint
+    includeenhancers) {
 
     gcmatlist <- mapply(function(currentcompartment, currentglcval,
                     includerepeats) {
                 return(matrixForUpset(currentcompartment, includerepeats,
-                                currentglcval))
+                                includeenhancers, currentglcval))
             }, theobject, glclist, MoreArgs = list(includerepeats),
             SIMPLIFY = TRUE)
     return(gcmatlist)
@@ -691,18 +700,20 @@ setMethod(
     return(gcmatlist)
 }
 
-.plotComplexUpset <- function(df, components, outfold) { # nolint
+.plotComplexUpset <- function(df, components, outfold, # nolint
+    plotglclevels, minsize) {
 
     expnamevec <- unique(df$expname)
     if (!isTRUE(all.equal(length(expnamevec), 2)))
         stop("The upset plot can only be generated for two replicates")
 
-    g <- ComplexUpset::upset(df, components,
-        base_annotations = list("Glc levels" = (
-            ggplot2::ggplot(mapping = ggplot2::aes(y = as.numeric(valpeak))) + # nolint
-            ggplot2::geom_jitter(ggplot2::aes(color = log10(
-                as.numeric(valpeak))), na.rm = TRUE,
-                alpha = 0.2) +
+    if (plotglclevels)
+        g <- ComplexUpset::upset(df, components,
+            base_annotations = list(
+                "Glc levels" = (
+                ggplot2::ggplot(mapping = ggplot2::aes(y = as.numeric(valpeak))) + # nolint
+                ggplot2::geom_jitter(ggplot2::aes(color = log10(
+                    as.numeric(valpeak))), na.rm = TRUE, alpha = 0.2) +
                 ggplot2::geom_violin(alpha = 0.5, na.rm = TRUE) +
                 ggplot2::coord_cartesian(ylim = quantile(as.numeric(df$valpeak),
                 c(0, 0.99)))),
@@ -710,10 +721,19 @@ setMethod(
                     counts = FALSE, mapping = aes(fill = expname)) + # nolint
                     ggplot2::scale_fill_manual(values = c("cadetblue4",
                         "chocolate3"))), width_ratio = 0.1,
-                        min_size = 20)
-
+                        min_size = minsize)
+    else
+        g <- ComplexUpset::upset(df, components,
+            base_annotations = list(
+                "Intersection size" = ComplexUpset::intersection_size(
+                    counts = FALSE, mapping = aes(fill = expname)) + # nolint
+                    ggplot2::scale_fill_manual(values = c("cadetblue4",
+                        "chocolate3"))), width_ratio = 0.1,
+                        min_size = minsize)
 
     ggplot2::ggsave("complexUpset.pdf", plot = g, device = "pdf",
+        path = outfold)
+    ggplot2::ggsave("complexUpset.png", plot = g, device = "png",
         path = outfold)
 }
 
@@ -726,12 +746,18 @@ setMethod(
 #'
 #' @usage
 #' complexUpsetDiagram(theobject, includerepeats, outfold)
-#' 
+#'
 #' @param theobject A list of objects of class `genomicCompartments`.
-#' @param includerepeats Logical indicating whether to include repeats in the
-#' analysis.
 #' @param outfold Character string specifying the output folder path for saving
 #' the upset diagram and boxplot.
+#' @param includerepeats Logical indicating whether to include repeats in the
+#' analysis. Default is FALSE.
+#' @param includeenhancers Logical indicating whether to include enhancers in
+#' the analysis. Default is FALSE.
+#' @param plotglclevels Logical indicating if the violin plot of the values of
+#' the glc peaks should be plotted on top. Default is FALSE.
+#' @param minsize Minimum number of overlap for a category to be indicated on
+#' the plot. Default is 10.
 #'
 #' @return No return value. The function generates and saves a complex upset
 #' plot in the specified output folder.
@@ -751,14 +777,16 @@ setMethod(
 
         signature = "list",
 
-        definition = function(theobject, includerepeats, outfold) {
+        definition = function(theobject, outfold, includerepeats = FALSE,
+            includeenhancers = FALSE, plotglclevels = FALSE, minsize = 10) {
 
             ## Retrieve the mean levels associated to each glc peak
             glclist <- lapply(theobject, getGlcPeakVal) # nolint
 
             ## Build the matrices in the objects to generate the upset diagrams
             ## with chipseq levels
-            gcmatlist <- .createMatUpset(theobject, glclist, includerepeats)
+            gcmatlist <- .createMatUpset(theobject, glclist, includerepeats,
+                includeenhancers)
 
             ## Add an expname column to each matrix
             gcmatlist <- .addColName(gcmatlist)
@@ -786,6 +814,6 @@ setMethod(
             ## Generating the upset plot
             ## (See https://krassowski.github.io/complex-upset/articles/
             ## Examples_R.html)
-            .plotComplexUpset(df, components, outfold)
+            .plotComplexUpset(df, components, outfold, plotglclevels, minsize)
         }
 )

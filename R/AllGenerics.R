@@ -561,7 +561,8 @@ setGeneric(
 
         name = "outputGlcPeaksCoordPerCompartment",
 
-        def = function(theobject, outputfolder, glcpeakspath, includerepeats) {
+        def = function(theobject, outputfolder, glcpeakspath, includerepeats,
+            includeenhancers) {
             standardGeneric("outputGlcPeaksCoordPerCompartment")
         },
         signature = "theobject")

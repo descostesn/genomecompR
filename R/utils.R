@@ -284,7 +284,8 @@ filterChromAndStrand <- function(currentgr) { # nolint
 #' features, and optionally includes repeat annotations.
 #'
 #' @usage
-#' buildIntervalsObject(peakspathvec, geneannos, includerepeats)
+#' buildIntervalsObject(peakspathvec, geneannos, includerepeats = FALSE,
+#'  repeatsannovec = NA)
 #'
 #' @param peakspathvec A named vector of file paths to peak files in GFF format
 #' for various ChIP-seq and ATAC-seq data. Expected names include: "H3K27ac",
@@ -293,8 +294,10 @@ filterChromAndStrand <- function(currentgr) { # nolint
 #' @param geneannos A list of gene annotation files to be used for defining
 #' non-redundant gene sets and other features.
 #' @param includerepeats A logical value indicating whether to include repeat
-#' annotations (LINE, LTR, SINE).
-#'
+#' annotations (LINE, LTR, SINE). Default set to FALSE.
+#' @param repeatsannovec If includerepeats is TRUE, a vector of paths to the
+#' LINE, LTR, and SINE coordinates.
+#' 
 #' @return An updated `genomeCompart` object with defined genomic features and,
 #' optionally, repeat annotations.
 #'
@@ -331,8 +334,8 @@ filterChromAndStrand <- function(currentgr) { # nolint
 #' gc <- buildIntervalsObject(peakspathvec, geneannos, includerepeats)
 #' }
 #'
-buildIntervalsObject <- function(peakspathvec, geneannos, includerepeats, # nolint
-    repeatsannovec = NA) {
+buildIntervalsObject <- function(peakspathvec, geneannos,
+    includerepeats = FALSE, repeatsannovec = NA) {
 
     ## Verify that repeatsannovec is provided if includerepeats is TRUE
     if (includerepeats && is.na(repeatsannovec))

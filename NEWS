@@ -1,6 +1,6 @@
 1.0.5:
-- Update buildIntervalsObject documentation
-- In buildIntervalsObject, set default value of includerepeats to FALSE
+- In method extractCompCoordWithPeak, set includerep = FALSE and update documentation
+- In buildIntervalsObject, set default value of includerepeats to FALSE and update documentation
 - Make some parameters default in checkParams
 1.0.4:
 Add documentation

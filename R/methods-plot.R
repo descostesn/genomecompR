@@ -700,18 +700,20 @@ setMethod(
     return(gcmatlist)
 }
 
-.plotComplexUpset <- function(df, components, outfold) { # nolint
+.plotComplexUpset <- function(df, components, outfold, # nolint
+    plotglclevels, minsize) {
 
     expnamevec <- unique(df$expname)
     if (!isTRUE(all.equal(length(expnamevec), 2)))
         stop("The upset plot can only be generated for two replicates")
 
-    g <- ComplexUpset::upset(df, components,
-        base_annotations = list("Glc levels" = (
-            ggplot2::ggplot(mapping = ggplot2::aes(y = as.numeric(valpeak))) + # nolint
-            ggplot2::geom_jitter(ggplot2::aes(color = log10(
-                as.numeric(valpeak))), na.rm = TRUE,
-                alpha = 0.2) +
+    if (plotglclevels)
+        g <- ComplexUpset::upset(df, components,
+            base_annotations = list(
+                "Glc levels" = (
+                ggplot2::ggplot(mapping = ggplot2::aes(y = as.numeric(valpeak))) + # nolint
+                ggplot2::geom_jitter(ggplot2::aes(color = log10(
+                    as.numeric(valpeak))), na.rm = TRUE, alpha = 0.2) +
                 ggplot2::geom_violin(alpha = 0.5, na.rm = TRUE) +
                 ggplot2::coord_cartesian(ylim = quantile(as.numeric(df$valpeak),
                 c(0, 0.99)))),
@@ -719,8 +721,15 @@ setMethod(
                     counts = FALSE, mapping = aes(fill = expname)) + # nolint
                     ggplot2::scale_fill_manual(values = c("cadetblue4",
                         "chocolate3"))), width_ratio = 0.1,
-                        min_size = 20)
-
+                        min_size = minsize)
+    else
+        g <- ComplexUpset::upset(df, components,
+            base_annotations = list(
+                "Intersection size" = ComplexUpset::intersection_size(
+                    counts = FALSE, mapping = aes(fill = expname)) + # nolint
+                    ggplot2::scale_fill_manual(values = c("cadetblue4",
+                        "chocolate3"))), width_ratio = 0.1,
+                        min_size = minsize)
 
     ggplot2::ggsave("complexUpset.pdf", plot = g, device = "pdf",
         path = outfold)

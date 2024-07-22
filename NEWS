@@ -1,4 +1,6 @@
 1.0.5:
+- Update buildIntervalsObject documentation
+- In buildIntervalsObject, set default value of includerepeats to FALSE
 - Make some parameters default in checkParams
 1.0.4:
 Add documentation

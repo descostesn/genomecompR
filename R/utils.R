@@ -296,8 +296,10 @@ filterChromAndStrand <- function(currentgr) { # nolint
 #' @param includerepeats A logical value indicating whether to include repeat
 #' annotations (LINE, LTR, SINE). Default set to FALSE.
 #' @param repeatsannovec If includerepeats is TRUE, a vector of paths to the
-#' LINE, LTR, and SINE coordinates.
-#' 
+#' LINE, LTR, and SINE coordinates. Default is NA.
+#' @param enhancers Logical indicating if active and poised enhancers should
+#' be computed. Default is FALSE.
+#'
 #' @return An updated `genomeCompart` object with defined genomic features and,
 #' optionally, repeat annotations.
 #'
@@ -330,12 +332,11 @@ filterChromAndStrand <- function(currentgr) { # nolint
 #'      RING1B = "path/to/RING1B.gff", H3K9me3 = "path/to/H3K9me3.gff")
 #' geneannos <- list("path/to/gencode.gff", "path/to/refGene.gff",
 #' "path/to/refseq.gff")
-#' includerepeats <- FALSE
-#' gc <- buildIntervalsObject(peakspathvec, geneannos, includerepeats)
+#' gc <- buildIntervalsObject(peakspathvec, geneannos)
 #' }
 #'
-buildIntervalsObject <- function(peakspathvec, geneannos,
-    includerepeats = FALSE, repeatsannovec = NA) {
+buildIntervalsObject <- function(peakspathvec, geneannos, # nolint
+    includerepeats = FALSE, repeatsannovec = NA, enhancers = FALSE) {
 
     ## Verify that repeatsannovec is provided if includerepeats is TRUE
     if (includerepeats && is.na(repeatsannovec))
@@ -388,24 +389,31 @@ buildIntervalsObject <- function(peakspathvec, geneannos,
     ## Define active enhancer: H3K27ac/H3K4me1/ATAC-seq. They should not
     ## overlap with the combination of UCSC refGene, NCBI RefSeq, and GENCODE
     ## VM25 that are in the geneAnnotations slot.
-    if (!is.na(peakspathvec["H3K27ac"]) && !is.na(peakspathvec["H3K4me1"]) &&
-      !is.na(peakspathvec["ATACSeq"]))
-      gc <- enhancer(gc, peakspathvec["H3K27ac"], peakspathvec["H3K4me1"], # nolint
-            peakspathvec["ATACSeq"], "H3K27ac", "H3K4me1", "ATACSeq", "active")
-    else
-      message("Active enhancers could not be defined, need H3K27ac, H3K4me1",
-        " and ATAC-seq bigwigs")
+    if (enhancers) {
+        if (!is.na(peakspathvec["H3K27ac"]) &&
+            !is.na(peakspathvec["H3K4me1"]) &&
+            !is.na(peakspathvec["ATACSeq"]))
+            gc <- enhancer(gc, peakspathvec["H3K27ac"], # nolint
+                peakspathvec["H3K4me1"], peakspathvec["ATACSeq"],
+                "H3K27ac", "H3K4me1", "ATACSeq", "active")
+        else
+            message("Active enhancers could not be defined, need H3K27ac,",
+                " H3K4me1 and ATAC-seq bigwigs")
+    }
 
     ## Define poised enhancer: H3K27me3/H3K4me1/PRC2. They should not overlap
     ## with the combination of UCSC refGene, NCBI RefSeq, and GENCODE VM25.
-    if (!is.na(peakspathvec["H3K27me3"]) && !is.na(peakspathvec["H3K4me1"]) &&
-      !is.na(peakspathvec["Suz12"]))
-      gc <- enhancer(gc, peakspathvec["H3K27me3"], peakspathvec["H3K4me1"], # nolint
-            peakspathvec["Suz12"], "H3K27me3", "H3K4me1", "Suz12", "poised")
-    else
-      message("Poised enhancers could not be defined, need H3K27me3, H3K4me1",
-        " and Suz12 bigwigs")
-
+    if (enhancers) {
+        if (!is.na(peakspathvec["H3K27me3"]) &&
+            !is.na(peakspathvec["H3K4me1"]) &&
+            !is.na(peakspathvec["Suz12"]))
+            gc <- enhancer(gc, peakspathvec["H3K27me3"], # nolint
+                peakspathvec["H3K4me1"], peakspathvec["Suz12"],
+                "H3K27me3", "H3K4me1", "Suz12", "poised")
+        else
+            message("Poised enhancers could not be defined, need H3K27me3,",
+                " H3K4me1 and Suz12 bigwigs")
+    }
 
     ## Define polycomb domain: Suz12 and RING1B overlap
     if (!is.na(peakspathvec["Suz12"]) && !is.na(peakspathvec["RING1B"]))

@@ -672,12 +672,13 @@ setMethod(
 ## complexUpsetDiagram
 #################################
 
-.createMatUpset <- function(theobject, glclist, includerepeats) { # nolint
+.createMatUpset <- function(theobject, glclist, includerepeats, # nolint
+    includeenhancers) {
 
     gcmatlist <- mapply(function(currentcompartment, currentglcval,
                     includerepeats) {
                 return(matrixForUpset(currentcompartment, includerepeats,
-                                currentglcval))
+                                includeenhancers, currentglcval))
             }, theobject, glclist, MoreArgs = list(includerepeats),
             SIMPLIFY = TRUE)
     return(gcmatlist)

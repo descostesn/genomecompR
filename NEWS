@@ -1,4 +1,5 @@
 1.0.5:
+- In method complexUpsetDiagram, set includerep = FALSE and update documentation
 - In method extractCompCoordWithPeak, set includerep = FALSE and update documentation
 - In buildIntervalsObject, set default value of includerepeats to FALSE and update documentation
 - Make some parameters default in checkParams

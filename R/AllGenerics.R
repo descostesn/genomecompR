@@ -596,7 +596,7 @@ setGeneric(
 
         name = "complexUpsetDiagram",
 
-        def = function(theobject, includerepeats, outfold) {
+        def = function(theobject, outfold, includerepeats = FALSE) {
             standardGeneric("complexUpsetDiagram")
         },
         signature = "theobject")

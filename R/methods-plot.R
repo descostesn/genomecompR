@@ -728,10 +728,10 @@ setMethod(
 #' complexUpsetDiagram(theobject, includerepeats, outfold)
 #' 
 #' @param theobject A list of objects of class `genomicCompartments`.
-#' @param includerepeats Logical indicating whether to include repeats in the
-#' analysis.
 #' @param outfold Character string specifying the output folder path for saving
 #' the upset diagram and boxplot.
+#' @param includerepeats Logical indicating whether to include repeats in the
+#' analysis. Default is FALSE.
 #'
 #' @return No return value. The function generates and saves a complex upset
 #' plot in the specified output folder.
@@ -751,7 +751,7 @@ setMethod(
 
         signature = "list",
 
-        definition = function(theobject, includerepeats, outfold) {
+        definition = function(theobject, outfold, includerepeats = FALSE) {
 
             ## Retrieve the mean levels associated to each glc peak
             glclist <- lapply(theobject, getGlcPeakVal) # nolint

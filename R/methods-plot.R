@@ -259,6 +259,8 @@ setMethod(
 #' @param theobject An object of class `genomicCompartments`.
 #' @param includerepeats Logical indicating whether to include repeats in the
 #' analysis.
+#' @param includeenhancers Logical indicating whether to include enhancers in
+#' the analysis.
 #' @param bwpath Character string specifying the path to the bigWig file
 #' containing glc peak values.
 #'
@@ -280,7 +282,8 @@ setMethod(
 
         signature = "genomicCompartments",
 
-        definition = function(theobject, includerepeats, bwpath) {
+        definition = function(theobject, includerepeats, includeenhancers,
+            bwpath) {
 
             ## Check the Object
             validObject(theobject)
@@ -288,7 +291,7 @@ setMethod(
             ## Considering overlapping glcnac peaks only
             ## Retrieving lists of GR for glcnac peaks and compartments
             querygr <- getRefPeaks(theobject) # nolint
-            complist <- aslist(theobject, includerepeats) # nolint
+            complist <- aslist(theobject, includerepeats, includeenhancers) # nolint
 
             ## Retrieving glcnac peak on each compartments
             glclist <- .overlapByComp(complist, querygr)

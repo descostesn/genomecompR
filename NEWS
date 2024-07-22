@@ -1,4 +1,5 @@
 1.0.5:
+- add parameter includeenhancers to multiple methods and functions
 - In extractCompCoordWithPeak, add the boolean includeenhancers = FALSE as parameter
 - Modify the code of aslist to make enhancer inclusion optional
 - In buildIntervalsObject, add the boolean enhancers parameter set to FALSE and update documentation

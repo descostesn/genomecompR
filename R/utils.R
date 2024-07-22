@@ -172,8 +172,8 @@ buildGR <- function(currentpath) { # nolint
 #' }
 #'
 checkParams <- function(peakspathqueryvec, glcnacbwvec, querynamevec, # nolint
-        geneannovec, peakspathcategoriesvec, repeatsannovec, countstable,
-        includerepeats, countsannotype) {
+        geneannovec, peakspathcategoriesvec, repeatsannovec = NA,
+        countstable = NA, includerepeats = NA, countsannotype = NA) {
 
     if (length(peakspathqueryvec) > 2)
         stop("The script is currently designed to handle two experiments.")
@@ -203,17 +203,18 @@ checkParams <- function(peakspathqueryvec, glcnacbwvec, querynamevec, # nolint
                 " H3K4me3, Suz12, RING1B, H3K9me3, Ser5P, Ser2P, ATACSeq. ",
                 "Each file should contain these strings.")
 
-    if (includerepeats)
+    if (!is.na(includerepeats) && includerepeats && !is.na(repeatsannovec))
         if (!(grepl("LINE", repeatsannovec[1]) &&
                     grepl("LTR", repeatsannovec[2]) &&
                     grepl("SINE", repeatsannovec[3])))
             stop("Verify that your repeats are LINE, LTR, and SINE. Each ",
                     "file should contain these strings.")
 
-    if (!isTRUE(all.equal(length(countstable), 1)))
+    if (!is.na(countstable) && !isTRUE(all.equal(length(countstable), 1)))
         stop("Only one counts table should be provided.")
 
-    if (!isTRUE(all.equal(countsannotype, "ensembl")) &&
+    if (!is.na(countsannotype) &&
+        !isTRUE(all.equal(countsannotype, "ensembl")) &&
         !isTRUE(all.equal(countsannotype, "entrez")))
         stop("The first column of the count table file should be ensembl ",
             " or entrez IDs")

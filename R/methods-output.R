@@ -153,7 +153,7 @@ setMethod(
 #' @param theobject An object of class `genomicCompartments`.
 #' @param outfold Path to the folder where output files will be written.
 #' @param includerep Logical indicating whether to include repeat regions in
-#' the analysis.
+#' the analysis. Default is FALSE.
 #'
 #' @return Returns the modified `genomicCompartments` object with compartments
 #' containing peaks.
@@ -173,7 +173,7 @@ setMethod(
 
         signature = "genomicCompartments",
 
-        definition = function(theobject, outfold, includerep) {
+        definition = function(theobject, outfold, includerep = FALSE) {
 
             ## Check the Object
             validObject(theobject)

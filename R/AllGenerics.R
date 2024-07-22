@@ -581,7 +581,7 @@ setGeneric(
 
         name = "extractCompCoordWithPeak",
 
-        def = function(theobject, outfold, includerep) {
+        def = function(theobject, outfold, includerep = FALSE) {
             standardGeneric("extractCompCoordWithPeak")
         },
         signature = "theobject")

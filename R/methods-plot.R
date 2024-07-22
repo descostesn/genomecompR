@@ -77,7 +77,8 @@ setMethod(
 
             ## Perform the overlap
             message("Performing overlap")
-            resultoverlap <- .overlapGlucnacComp(theobject, includerepeats) # nolint
+            resultoverlap <- .overlapGlucnacComp(theobject, includerepeats, # nolint
+                includeenhancers)
 
             ## Creata a list with each overlapping compartments for each peak
             complist <- aslist(theobject, includerepeats, includeenhancers) # nolint

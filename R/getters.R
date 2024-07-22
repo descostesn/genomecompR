@@ -124,30 +124,33 @@ setMethod(
 setMethod(
         f = "aslist",
         signature = "genomicCompartments",
-        definition = function(theobject, includerepeats) {
+        definition = function(theobject, includerepeats, includeenhancers) {
 
-            compnames <- c("activeProm", "activeEnh", "poisedEnh", "PcGDomain",
-                    "heteroChrom", "bivalentProm", "initiation", "elongation",
-                    "termination")
+            compnames <- c("activeProm", "PcGDomain", "heteroChrom",
+                "bivalentProm", "initiation", "elongation", "termination")
 
-            if (includerepeats)
-                compnames <- c(compnames, c("SINE", "LINE", "LTR"))
-
-            result <- list(theobject@activeProm, theobject@activeEnh,
-                    theobject@poisedEnh, theobject@PcGDomain,
+            result <- list(theobject@activeProm, theobject@PcGDomain,
                     theobject@heteroChrom, theobject@bivalentProm,
                     theobject@initiation, theobject@elongation,
                     theobject@termination)
 
-            if (includerepeats)
+            if (includeenhancers) {
+                compnames <- c(compnames, c("activeEnh", "poisedEnh"))
+                result <- c(result, list(theobject@activeEnh,
+                    theobject@poisedEnh))
+            }
+
+            if (includerepeats) {
+                compnames <- c(compnames, c("SINE", "LINE", "LTR"))
                 result <- c(result, list(theobject@SINE, theobject@LINE,
                     theobject@LTR))
+            }
 
             ## Removing compartments that were not defined
             idx <-  which(lengths(result) == 0)
             if (!isTRUE(all.equal(length(idx), 0))) {
                 message("Number of empty compartments: ", length(idx))
-                message("Removing: ", paste(compnames[idx], collapse=" "))
+                message("Removing: ", paste(compnames[idx], collapse = " "))
                 result <-  result[-idx]
                 compnames <- compnames[-idx]
             }

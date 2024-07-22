@@ -733,6 +733,8 @@ setMethod(
 
     ggplot2::ggsave("complexUpset.pdf", plot = g, device = "pdf",
         path = outfold)
+    ggplot2::ggsave("complexUpset.png", plot = g, device = "png",
+        path = outfold)
 }
 
 #' Generate Complex Upset Diagram

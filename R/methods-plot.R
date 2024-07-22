@@ -255,14 +255,14 @@ setMethod(
 #'
 #' @usage
 #' retrieveGlcPeakVal(theobject, includerepeats, bwpath)
-#' 
+#'
 #' @param theobject An object of class `genomicCompartments`.
-#' @param includerepeats Logical indicating whether to include repeats in the
-#' analysis.
-#' @param includeenhancers Logical indicating whether to include enhancers in
-#' the analysis.
 #' @param bwpath Character string specifying the path to the bigWig file
 #' containing glc peak values.
+#' @param includerepeats Logical indicating whether to include repeats in the
+#' analysis. Default is FALSE.
+#' @param includeenhancers Logical indicating whether to include enhancers in
+#' the analysis. Default is FALSE.
 #'
 #' @return Returns the modified `genomicCompartments` object with glc peak
 #' values assigned.
@@ -282,8 +282,8 @@ setMethod(
 
         signature = "genomicCompartments",
 
-        definition = function(theobject, includerepeats, includeenhancers,
-            bwpath) {
+        definition = function(theobject, bwpath, includerepeats = FALSE,
+            includeenhancers = FALSE) {
 
             ## Check the Object
             validObject(theobject)

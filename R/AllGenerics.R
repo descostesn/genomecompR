@@ -540,7 +540,8 @@ setGeneric(
 
         name = "retrieveGlcPeakVal",
 
-        def = function(theobject, includerepeats, includeenhancers, bwpath) {
+        def = function(theobject, bwpath, includerepeats = FALSE,
+            includeenhancers = FALSE) {
             standardGeneric("retrieveGlcPeakVal")
         },
         signature = "theobject")

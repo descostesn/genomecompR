@@ -48,6 +48,8 @@
 #' @param theobject An object of class `genomicCompartments`.
 #' @param includerepeats Logical indicating whether to include repeats in the
 #' analysis.
+#' @param includeenhancers Logical indicating whether to include enhancers in
+#' the analysis.
 #' @param glcpeakvalues Numeric vector of glc peak values.
 #'
 #' @return Returns the modified `genomicCompartments` object with the regions
@@ -67,7 +69,8 @@ setMethod(
 
         signature = "genomicCompartments",
 
-        definition = function(theobject, includerepeats, glcpeakvalues) {
+        definition = function(theobject, includerepeats, includeenhancers,
+            glcpeakvalues) {
 
             ## Check the Object
             validObject(theobject)
@@ -77,7 +80,7 @@ setMethod(
             resultoverlap <- .overlapGlucnacComp(theobject, includerepeats) # nolint
 
             ## Creata a list with each overlapping compartments for each peak
-            compnamevec <- names(aslist(theobject, includerepeats)) # nolint
+            compnamevec <- names(aslist(theobject, includerepeats, includeenhancers)) # nolint
             subjecthitsnames <- compnamevec[
                     S4Vectors::subjectHits(resultoverlap)]
             regionsperpeaklist <- split(subjecthitsnames,

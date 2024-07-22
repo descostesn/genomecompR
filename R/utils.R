@@ -87,11 +87,11 @@ buildGR <- function(currentpath) { # nolint
         return(currenttable)
 }
 
-.overlapGlucnacComp <- function(theobject, includerepeats) { # nolint
+.overlapGlucnacComp <- function(theobject, includerepeats, includeenhancers) { # nolint
 
     ## Make a GRangesList with all the compartments
     message("Preparing data.")
-    complist <- aslist(theobject, includerepeats) # nolint
+    complist <- aslist(theobject, includerepeats, includeenhancers) # nolint
     compgrlist <- GenomicRanges::GRangesList(complist)
 
     ## Retrieve the GR of glc peaks

@@ -738,6 +738,8 @@ setMethod(
 #' the upset diagram and boxplot.
 #' @param includerepeats Logical indicating whether to include repeats in the
 #' analysis. Default is FALSE.
+#' @param includeenhancers Logical indicating whether to include enhancers in
+#' the analysis. Default is FALSE.
 #'
 #' @return No return value. The function generates and saves a complex upset
 #' plot in the specified output folder.
@@ -757,14 +759,16 @@ setMethod(
 
         signature = "list",
 
-        definition = function(theobject, outfold, includerepeats = FALSE) {
+        definition = function(theobject, outfold, includerepeats = FALSE,
+            includeenhancers = FALSE) {
 
             ## Retrieve the mean levels associated to each glc peak
             glclist <- lapply(theobject, getGlcPeakVal) # nolint
 
             ## Build the matrices in the objects to generate the upset diagrams
             ## with chipseq levels
-            gcmatlist <- .createMatUpset(theobject, glclist, includerepeats)
+            gcmatlist <- .createMatUpset(theobject, glclist, includerepeats,
+                includeenhancers)
 
             ## Add an expname column to each matrix
             gcmatlist <- .addColName(gcmatlist)

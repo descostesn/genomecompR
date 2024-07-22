@@ -80,7 +80,8 @@ setMethod(
             resultoverlap <- .overlapGlucnacComp(theobject, includerepeats) # nolint
 
             ## Creata a list with each overlapping compartments for each peak
-            compnamevec <- names(aslist(theobject, includerepeats, includeenhancers)) # nolint
+            complist <- aslist(theobject, includerepeats, includeenhancers) # nolint
+            compnamevec <- names(complist)
             subjecthitsnames <- compnamevec[
                     S4Vectors::subjectHits(resultoverlap)]
             regionsperpeaklist <- split(subjecthitsnames,

@@ -744,7 +744,7 @@ setMethod(
 #'
 #' @usage
 #' complexUpsetDiagram(theobject, includerepeats, outfold)
-#' 
+#'
 #' @param theobject A list of objects of class `genomicCompartments`.
 #' @param outfold Character string specifying the output folder path for saving
 #' the upset diagram and boxplot.
@@ -752,6 +752,10 @@ setMethod(
 #' analysis. Default is FALSE.
 #' @param includeenhancers Logical indicating whether to include enhancers in
 #' the analysis. Default is FALSE.
+#' @param plotglclevels Logical indicating if the violin plot of the values of
+#' the glc peaks should be plotted on top. Default is FALSE.
+#' @param minsize Minimum number of overlap for a category to be indicated on
+#' the plot. Default is 10.
 #'
 #' @return No return value. The function generates and saves a complex upset
 #' plot in the specified output folder.
@@ -772,7 +776,7 @@ setMethod(
         signature = "list",
 
         definition = function(theobject, outfold, includerepeats = FALSE,
-            includeenhancers = FALSE) {
+            includeenhancers = FALSE, plotglclevels = FALSE, minsize = 10) {
 
             ## Retrieve the mean levels associated to each glc peak
             glclist <- lapply(theobject, getGlcPeakVal) # nolint
@@ -808,6 +812,6 @@ setMethod(
             ## Generating the upset plot
             ## (See https://krassowski.github.io/complex-upset/articles/
             ## Examples_R.html)
-            .plotComplexUpset(df, components, outfold)
+            .plotComplexUpset(df, components, outfold, plotglclevels, minsize)
         }
 )

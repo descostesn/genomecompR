@@ -17,6 +17,9 @@ coordinates.}
 
 \item{includerepeats}{Logical indicating whether to include repeat regions
 in the analysis.}
+
+\item{includeenhancers}{Logical indicating whether to include enhancers
+in the analysis.}
 }
 \value{
 Returns nothing explicitly; Write GFF and BED files of the
@@ -45,7 +48,7 @@ gc_obj <- genomeCompart(peakspathvec, geneannovec)
 
 # Output glc peaks coordinates per compartment
 outputGlcPeaksCoordPerCompartment(gc_obj, outputfolder, peakspathquery,
-includerepeats = FALSE)
+includerepeats = FALSE, includeenhancers = TRUE)
 }
 
 }

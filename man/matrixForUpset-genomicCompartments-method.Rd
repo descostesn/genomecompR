@@ -12,6 +12,9 @@ matrixForUpset(theobject, includerepeats, glcpeakvalues)
 \item{includerepeats}{Logical indicating whether to include repeats in the
 analysis.}
 
+\item{includeenhancers}{Logical indicating whether to include enhancers in
+the analysis.}
+
 \item{glcpeakvalues}{Numeric vector of glc peak values.}
 }
 \value{

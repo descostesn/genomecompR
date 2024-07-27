@@ -9,11 +9,20 @@ complexUpsetDiagram(theobject, includerepeats, outfold)
 \arguments{
 \item{theobject}{A list of objects of class `genomicCompartments`.}
 
-\item{includerepeats}{Logical indicating whether to include repeats in the
-analysis.}
-
 \item{outfold}{Character string specifying the output folder path for saving
 the upset diagram and boxplot.}
+
+\item{includerepeats}{Logical indicating whether to include repeats in the
+analysis. Default is FALSE.}
+
+\item{includeenhancers}{Logical indicating whether to include enhancers in
+the analysis. Default is FALSE.}
+
+\item{plotglclevels}{Logical indicating if the violin plot of the values of
+the glc peaks should be plotted on top. Default is FALSE.}
+
+\item{minsize}{Minimum number of overlap for a category to be indicated on
+the plot. Default is 10.}
 }
 \value{
 No return value. The function generates and saves a complex upset

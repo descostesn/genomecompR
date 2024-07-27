@@ -12,7 +12,10 @@ extractCompCoordWithPeak(theobject, outfold, includerep)
 \item{outfold}{Path to the folder where output files will be written.}
 
 \item{includerep}{Logical indicating whether to include repeat regions in
-the analysis.}
+the analysis. Default is FALSE.}
+
+\item{includeenhancers}{Logical indicating whether to include enhancers in
+the analysis. Default is FALSE.}
 }
 \value{
 Returns the modified `genomicCompartments` object with compartments
@@ -28,8 +31,7 @@ compartments containing peaks and outputs their coordinates in GFF format.
 # Create a genomicCompartments object
 gc_obj <- genomeCompart(peakspathvec, geneannovec)
 # Extract compartment coordinates with peaks
-extractCompCoordWithPeak(gc_obj, outfold = "output_folder",
- includerep = TRUE)
+extractCompCoordWithPeak(gc_obj, outfold = "output_folder")
 }
 
 }

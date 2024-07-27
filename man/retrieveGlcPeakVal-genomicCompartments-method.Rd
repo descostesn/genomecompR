@@ -9,11 +9,14 @@ retrieveGlcPeakVal(theobject, includerepeats, bwpath)
 \arguments{
 \item{theobject}{An object of class `genomicCompartments`.}
 
-\item{includerepeats}{Logical indicating whether to include repeats in the
-analysis.}
-
 \item{bwpath}{Character string specifying the path to the bigWig file
 containing glc peak values.}
+
+\item{includerepeats}{Logical indicating whether to include repeats in the
+analysis. Default is FALSE.}
+
+\item{includeenhancers}{Logical indicating whether to include enhancers in
+the analysis. Default is FALSE.}
 }
 \value{
 Returns the modified `genomicCompartments` object with glc peak

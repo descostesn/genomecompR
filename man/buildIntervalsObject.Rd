@@ -4,7 +4,8 @@
 \alias{buildIntervalsObject}
 \title{Build Genomic Intervals Object}
 \usage{
-buildIntervalsObject(peakspathvec, geneannos, includerepeats)
+buildIntervalsObject(peakspathvec, geneannos, includerepeats = FALSE,
+ repeatsannovec = NA)
 }
 \arguments{
 \item{peakspathvec}{A named vector of file paths to peak files in GFF format
@@ -16,7 +17,13 @@ for various ChIP-seq and ATAC-seq data. Expected names include: "H3K27ac",
 non-redundant gene sets and other features.}
 
 \item{includerepeats}{A logical value indicating whether to include repeat
-annotations (LINE, LTR, SINE).}
+annotations (LINE, LTR, SINE). Default set to FALSE.}
+
+\item{repeatsannovec}{If includerepeats is TRUE, a vector of paths to the
+LINE, LTR, and SINE coordinates. Default is NA.}
+
+\item{enhancers}{Logical indicating if active and poised enhancers should
+be computed. Default is FALSE.}
 }
 \value{
 An updated `genomeCompart` object with defined genomic features and,
@@ -56,8 +63,7 @@ peakspathvec <- c(H3K27ac = "path/to/H3K27ac.gff",
      RING1B = "path/to/RING1B.gff", H3K9me3 = "path/to/H3K9me3.gff")
 geneannos <- list("path/to/gencode.gff", "path/to/refGene.gff",
 "path/to/refseq.gff")
-includerepeats <- FALSE
-gc <- buildIntervalsObject(peakspathvec, geneannos, includerepeats)
+gc <- buildIntervalsObject(peakspathvec, geneannos)
 }
 
 }

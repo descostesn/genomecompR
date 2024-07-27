@@ -1,6 +1,6 @@
 Package: genomecompR
 Title: Division of the genome into functional compartments
-Version: 1.0.5
+Version: 1.0.6
 Authors@R:
     person("Nicolas", "Descostes", email = "nicolas.descostes@embl.it", role = "cre")
 Description: 

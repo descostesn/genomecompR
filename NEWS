@@ -1,3 +1,5 @@
+1.0.6:
+- update documentation
 1.0.5:
 - Change .plotComplexUpset to make the violin plot on top optional
 - add parameter includeenhancers to multiple methods and functions

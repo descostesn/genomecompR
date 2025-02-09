@@ -1,3 +1,5 @@
+1.0.7:
+- set includeenhancers to FALSE by default in aslist
 1.0.6:
 - update documentation
 1.0.5:

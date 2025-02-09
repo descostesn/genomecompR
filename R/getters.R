@@ -124,7 +124,8 @@ setMethod(
 setMethod(
         f = "aslist",
         signature = "genomicCompartments",
-        definition = function(theobject, includerepeats, includeenhancers) {
+        definition = function(theobject, includerepeats,
+            includeenhancers = FALSE) {
 
             compnames <- c("activeProm", "PcGDomain", "heteroChrom",
                 "bivalentProm", "initiation", "elongation", "termination")

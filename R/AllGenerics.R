@@ -217,7 +217,7 @@ setGeneric(
 setGeneric(
  name = "aslist",
 
-        def = function(theobject, includerepeats, includeenhancers) {
+        def = function(theobject, includerepeats, includeenhancers = FALSE) {
             standardGeneric("aslist")
         },
         signature = "theobject")
